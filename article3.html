@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Making an Impact: WeCare Volunteers at UDUF AFRICA Under 45 CEOs Summit</title>
+
+  <!-- SEO -->
+  <meta name="description" content="WeCare Nursing Services volunteers provided medical outreach at the UDUF AFRICA Under 45 CEOs Business & Leadership Summit, promoting accessible healthcare beyond hospital walls." />
+  <meta name="keywords" content="WeCare Nursing Services, Medical Outreach, UDUF Africa, Healthcare Volunteers, Community Health Nigeria" />
+  <meta name="author" content="WeCare Nursing Services" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* GLOBAL FIX */
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #ffffff;
+      color: #1f2d3d;
+      line-height: 1.7;
+    }
+
+    .article-wrapper {
+      max-width: 900px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 80px 20px;
+      box-sizing: border-box;
+    }
+
+    /* Header */
+    .article-header {
+      font-family: 'Lora', serif;
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: #0b2545;
+      margin-bottom: 30px;
+      opacity: 0;
+      transform: translateX(80px);
+      transition: all 0.8s ease;
+    }
+
+    /* Images */
+    .article-image,
+    .article-image-mid {
+      width: 100%;
+      max-width: 100%;
+      margin: 40px 0;
+      border-radius: 10px;
+      overflow: hidden;
+      opacity: 0;
+      transform: scale(0.96);
+      transition: all 1s ease;
+      box-sizing: border-box;
+    }
+
+    .article-image img,
+    .article-image-mid img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* Content */
+    .article-content {
+      overflow-wrap: break-word;
+    }
+
+    .article-content p {
+      margin-bottom: 20px;
+      font-size: 1.05rem;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+
+    /* CTA Button */
+    .article-cta {
+      display: inline-block;
+      margin: 40px auto 0 auto;
+      padding: 12px 30px;
+      background-color: #f97316; /* Orange */
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 1.05rem;
+      text-decoration: none;
+      border-radius: 8px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+
+    .active .article-cta {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Active Animations */
+    .active .article-header {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .active .article-image,
+    .active .article-image-mid {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .active .article-content p {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Stagger */
+    .article-content p:nth-child(1) { transition-delay: 0.2s; }
+    .article-content p:nth-child(2) { transition-delay: 0.35s; }
+    .article-content p:nth-child(3) { transition-delay: 0.5s; }
+    .article-content p:nth-child(4) { transition-delay: 0.65s; }
+    .article-cta { transition-delay: 0.8s; }
+
+    /* Mobile polish */
+    @media (max-width: 600px) {
+      .article-header {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="article-wrapper" id="articleSection">
+
+    <h1 class="article-header">
+      Making an Impact: WeCare Volunteers at UDUF AFRICA Under 45 CEOs Summit
+    </h1>
+
+    <!-- HERO IMAGE -->
+    <div class="article-image">
+      <img src="uduf-outreach-action.jpg" alt="WeCare Nursing Services medical outreach at UDUF AFRICA Under 45 CEOs Summit">
+    </div>
+
+    <div class="article-content">
+      <p>
+        In October 2025, the WeCare Nursing Services team stepped beyond the traditional hospital setting to deliver meaningful community impact at the UDUF AFRICA Under 45 CEOs Business & Leadership Summit. The event brought together some of Africa’s most promising young leaders, creating a unique space where healthcare met innovation and leadership.
+      </p>
+
+      <p>
+        Our volunteer nurses and healthcare professionals provided essential medical support, including basic health assessments, first aid services, and preventive healthcare education. Attendees experienced firsthand the importance of accessible medical care—even in high-energy, high-level corporate environments.
+      </p>
+
+      <!-- MID ARTICLE IMAGE -->
+      <div class="article-image-mid">
+        <img src="uduf-outreach-hero.jpg" alt="WeCare nurses providing on-site medical support during the summit">
+      </div>
+
+      <p>
+        This outreach was not merely about addressing minor health concerns. It was about awareness, preparedness, and trust. By being present, proactive, and professional, WeCare demonstrated that healthcare should move with people, ensuring safety and wellness wherever communities gather.
+      </p>
+
+      <p>
+        The experience reinforced our core belief: quality healthcare is not confined to hospitals. It belongs in communities, leadership spaces, and everyday life—supporting progress, innovation, and human well-being at every level.
+      </p>
+    </div>
+
+    <!-- CTA BUTTON -->
+    <div style="text-align:center;">
+      <a href="about.html" class="article-cta">Learn More About Us</a>
+    </div>
+
+  </section>
+
+  <script>
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          } else {
+            entry.target.classList.remove('active');
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(document.getElementById('articleSection'));
+  </script>
+
+</body>
+</html>

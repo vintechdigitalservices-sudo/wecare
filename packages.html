@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WeCare Nursing Services | Professional Home Care</title>
+
+  <meta name="description" content="Explore WeCare Nursing Services care packages. Home care, live-in care, and specialized services designed for the sick and elderly." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Outfit:wght@600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --white: #ffffff;
+      --green-primary: #15803d;
+      --green-light: #f0fdf4;
+      --orange-accent: #f97316;
+      --navy-blue: #0f172a;
+      --text-gray: #475569;
+      --border-color: #e2e8f0;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--white);
+      color: var(--text-gray);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Professional Header Gradient */
+    .header-section {
+      text-align: center;
+      padding: 100px 20px 60px;
+      background: linear-gradient(180deg, var(--green-light) 0%, var(--white) 100%);
+    }
+
+    .header-section h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      color: var(--navy-blue);
+      margin: 0 0 16px 0;
+      font-weight: 800;
+    }
+
+    .header-section p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+      color: var(--green-primary);
+      font-weight: 500;
+    }
+
+    /* Container */
+    .packages-wrapper {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 20px 20px 100px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 24px;
+    }
+
+    /* Card Styling */
+    .package-card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 40px 32px;
+      border: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .package-card:hover {
+      box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.08);
+      border-color: var(--green-primary);
+    }
+
+    /* Most Popular Styling */
+    .package-card.popular {
+      background: var(--white);
+      border: 2px solid var(--green-primary);
+      box-shadow: 0 20px 25px -5px rgba(21, 128, 61, 0.1);
+    }
+
+    .popular-badge {
+      position: absolute;
+      top: -14px;
+      left: 32px;
+      background: var(--green-primary);
+      color: white;
+      padding: 4px 16px;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .package-card h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.75rem;
+      margin: 0 0 12px 0;
+      color: var(--navy-blue);
+    }
+
+    .package-card .price {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 32px;
+      color: var(--navy-blue);
+      display: flex;
+      align-items: baseline;
+    }
+
+    .package-card .price span {
+      font-size: 0.9rem;
+      color: var(--text-gray);
+      font-weight: 400;
+      margin-left: 4px;
+    }
+
+    /* List styling */
+    .package-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 40px 0;
+      flex-grow: 1;
+    }
+
+    .package-card ul li {
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: flex-start;
+      color: var(--navy-blue);
+    }
+
+    .package-card ul li::before {
+      content: "";
+      width: 18px;
+      height: 18px;
+      margin-right: 12px;
+      margin-top: 3px;
+      flex-shrink: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2315803d'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'%3E%3C/path%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    .stars {
+      color: #eab308;
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+
+    /* Orange CTA Buttons */
+    .cta-btn {
+      display: block;
+      padding: 16px 24px;
+      text-align: center;
+      background: var(--orange-accent);
+      color: var(--white);
+      font-weight: 700;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      font-size: 1rem;
+      box-shadow: 0 4px 14px rgba(249, 115, 22, 0.2);
+    }
+
+    .cta-btn:hover {
+      background: #ea580c;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(249, 115, 22, 0.3);
+    }
+
+    /* Mobile view */
+    @media (max-width: 640px) {
+      .header-section { padding: 60px 20px 40px; }
+      .packages-wrapper { padding: 0 20px 60px; }
+      .package-card { padding: 32px 24px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header-section">
+    <h1>Our Care Packages</h1>
+    <p>Professional nursing and elderly care tailored to your family's needs</p>
+  </header>
+
+  <main class="packages-wrapper">
+
+    <article class="package-card">
+      <h2>Basic Care</h2>
+      <div class="price">₦50,000 <span>/ Month</span></div>
+      <ul>
+        <li>Three (3) days home nursing visit, Morning visits only</li>
+        <li>Vital check-up</li>
+        <li>Drug administration</li>
+        <li>Injection</li>
+      </ul>
+      <a class="cta-btn" href="https://wa.me/2349073190330?text=Hello%2C%20I%20got%20your%20information%20from%20your%20website%20on%20Google.%20I%20would%20like%20to%20hire%20the%20Basic%20Care%20package." target="_blank">Hire Package</a>
+    </article>
+
+    <article class="package-card popular">
+      <div class="popular-badge">Most Popular</div>
+      <h2>Advanced Care</h2>
+      <div class="price">₦85,000 <span>/ Month</span></div>
+      <div class="stars">★★★★★</div>
+      <ul>
+        <li>Six (6) days home nursing visit, 12 Hourly</li>
+        <li>Vital Check-up</li>
+        <li>Drug Administration</li>
+        <li>Wound Dressing</li>
+        <li>Injection and Drip</li>
+        <li>Weekly Medical Review</li>
+      </ul>
+      <a class="cta-btn" href="https://wa.me/2349073190330?text=Hello%2C%20I%20got%20your%20information%20from%20your%20website%20on%20Google.%20I%20would%20like%20to%20hire%20the%20Advanced%20Care%20package." target="_blank">Hire Package</a>
+    </article>
+
+    <article class="package-card">
+      <h2>Silver Care Plus</h2>
+      <div class="price">₦150,000 <span>/ Month</span></div>
+      <ul>
+        <li>Regular vital check-up</li>
+        <li>Drug administration</li>
+        <li>Wound dressing</li>
+        <li>Body washing and Bed making</li>
+        <li>Assisted movement</li>
+        <li>Injection and Drip</li>
+        <li>Live-in with patient 24/7</li>
+        <li>Weekly Medical Review</li>
+      </ul>
+      <a class="cta-btn" href="https://wa.me/2349073190330?text=Hello%2C%20I%20got%20your%20information%20from%20your%20website%20on%20Google.%20I%20would%20like%20to%20hire%20the%20Silver%20Care%20Plus%20package." target="_blank">Hire Package</a>
+    </article>
+
+    <article class="package-card">
+      <h2>Senior Citizen Care</h2>
+      <div class="price">₦250,000 <span>/ Month</span></div>
+      <ul>
+        <li>Regular vital check-up</li>
+        <li>Drug administration</li>
+        <li>Wound dressing</li>
+        <li>Physiotherapy and Exercise</li>
+        <li>Body washing and Bed making</li>
+        <li>Assisted movement</li>
+        <li>Injection and Drip</li>
+        <li>Meal preparation & chores assistance</li>
+        <li>Bathing and dressing</li>
+        <li>Live-in with patient 24/7</li>
+        <li>Weekly Medical Review</li>
+        <li>Psychotherapy</li>
+      </ul>
+      <a class="cta-btn" href="https://wa.me/2349073190330?text=Hello%2C%20I%20got%20your%20information%20from%20your%20website%20on%20Google.%20I%20would%20like%20to%20hire%20the%20Senior%20Citizen%20Care%20package." target="_blank">Hire Package</a>
+    </article>
+
+  </main>
+
+</body>
+</html>

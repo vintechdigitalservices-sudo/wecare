@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WeCare Academy Launches Comprehensive Caregiver Training Programs</title>
+
+  <!-- SEO -->
+  <meta name="description" content="WeCare Nursing Services has launched WeCare Academy offering flexible online and onsite caregiver training programs with six months hospital internship, verifiable certificates, and international job opportunities." />
+  <meta name="keywords" content="WeCare Academy, Caregiver Training, Nursing Services, Online Courses, Onsite Training, Hospital Internship, Verifiable Certificates, International Jobs" />
+  <meta name="author" content="WeCare Nursing Services" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* GLOBAL FIX */
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #ffffff;
+      color: #1f2d3d;
+      line-height: 1.7;
+    }
+
+    .article-wrapper {
+      max-width: 900px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 80px 20px;
+      box-sizing: border-box;
+    }
+
+    /* Header */
+    .article-header {
+      font-family: 'Lora', serif;
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: #0b2545;
+      margin-bottom: 30px;
+      opacity: 0;
+      transform: translateX(80px);
+      transition: all 0.8s ease;
+    }
+
+    /* Images */
+    .article-image,
+    .article-image-mid {
+      width: 100%;
+      max-width: 100%;
+      margin: 40px 0;
+      border-radius: 10px;
+      overflow: hidden;
+      opacity: 0;
+      transform: scale(0.96);
+      transition: all 1s ease;
+      box-sizing: border-box;
+    }
+
+    .article-image img,
+    .article-image-mid img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* Content */
+    .article-content {
+      overflow-wrap: break-word;
+    }
+
+    .article-content p {
+      margin-bottom: 20px;
+      font-size: 1.05rem;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+
+    /* CTA Button */
+    .article-cta {
+      display: inline-block;
+      margin: 40px auto 0 auto;
+      padding: 12px 30px;
+      background-color: #f97316; /* Orange */
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 1.05rem;
+      text-decoration: none;
+      border-radius: 8px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+
+    .active .article-cta {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Active Animations */
+    .active .article-header {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .active .article-image,
+    .active .article-image-mid {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .active .article-content p {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Stagger */
+    .article-content p:nth-child(1) { transition-delay: 0.2s; }
+    .article-content p:nth-child(2) { transition-delay: 0.35s; }
+    .article-content p:nth-child(3) { transition-delay: 0.5s; }
+    .article-content p:nth-child(4) { transition-delay: 0.65s; }
+    .article-content p:nth-child(5) { transition-delay: 0.8s; }
+    .article-cta { transition-delay: 0.95s; }
+
+    /* Mobile polish */
+    @media (max-width: 600px) {
+      .article-header {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="article-wrapper" id="articleSection">
+
+    <h1 class="article-header">
+      WeCare Academy Launches Comprehensive Caregiver Training Programs
+    </h1>
+
+    <!-- HERO IMAGE -->
+    <div class="article-image">
+      <img src="academy-hero.jpg" alt="WeCare Academy launch, students and caregivers training">
+    </div>
+
+    <div class="article-content">
+      <p>
+        Founded with a mission to equip individuals with the skills and knowledge needed to save lives, WeCare Nursing Services has officially launched the WeCare Academy, setting a new standard for caregiver training in Nigeria and beyond.
+      </p>
+
+      <p>
+        The Academy was designed to address a critical gap in professional caregiving: accessible, credible, and hands-on training that prepares students to meet real-world challenges. Whether you are an aspiring caregiver, a healthcare enthusiast, or someone looking to elevate your professional skills, WeCare Academy provides flexible online and onsite programs tailored to your schedule.
+      </p>
+
+      <p>
+        Each student, whether online or offline, embarks on a six-month hospital internship, gaining practical experience under expert supervision. This ensures that by the time they graduate, they are not just certificate holders—they are confident, skilled, and job-ready caregivers.
+      </p>
+
+      <p>
+        All graduates receive verifiable certificates, offering credibility recognized by employers, families, and institutions. With these credentials, students gain access to local and international job opportunities, transforming a training program into a launchpad for a global caregiving career.
+      </p>
+
+      <p>
+        At WeCare Academy, training goes beyond lectures. Students are immersed in real-life scenarios, taught how to respond to emergencies, administer care with precision, and maintain empathy in every interaction. This holistic approach ensures that every graduate leaves ready to make a tangible impact on the lives of the people they care for.
+      </p>
+    </div>
+
+    <!-- CTA BUTTON -->
+    <div style="text-align:center;">
+      <a href="https://academy.wecarenigeria.com" class="article-cta" target="_blank">Enroll Now</a>
+    </div>
+
+  </section>
+
+  <script>
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          } else {
+            entry.target.classList.remove('active');
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(document.getElementById('articleSection'));
+  </script>
+
+</body>
+</html>

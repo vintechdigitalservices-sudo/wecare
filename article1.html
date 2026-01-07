@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic Meta Tags -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>January Promo: Diploma in Caregiving Programs | WeCare Nursing Services</title>
+  <meta name="description" content="Step into a life-changing career with WeCare Nursing Services. Get trained, earn verifiable certificates, and access international opportunities.">
+  <meta name="keywords" content="WeCare Nursing, caregiver training, diploma in caregiving, CPR, first aid, news, updates, international job opportunities">
+  <meta name="author" content="WeCare Nursing Services">
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:title" content="January Promo: Diploma in Caregiving Programs | WeCare Nursing Services">
+  <meta property="og:description" content="Step into a life-changing career with WeCare Nursing Services. Get trained, earn verifiable certificates, and access international opportunities.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://www.wecarenigeria.com/article1.html">
+  <meta property="og:image" content="images/training.jpg">
+  <meta property="og:site_name" content="WeCare Nursing Services">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="January Promo: Diploma in Caregiving Programs | WeCare Nursing Services">
+  <meta name="twitter:description" content="Step into a life-changing career with WeCare Nursing Services. Get trained, earn verifiable certificates, and access international opportunities.">
+  <meta name="twitter:image" content="images/training.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" href="images/Logo.png" type="image/png">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Inline Animations -->
+  <style>
+    body {
+      font-family: 'Lora', serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: slideUp 0.8s forwards;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: auto;
+      margin-bottom: 30px;
+      border-radius: 8px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeIn 1s forwards 0.3s;
+    }
+
+    p {
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: slideUp 0.8s forwards;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background-color: #FF7A00;
+      color: #fff;
+      text-decoration: none;
+      padding: 15px 25px;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: slideUp 0.8s forwards 0.6s;
+    }
+
+    .cta-button:hover {
+      background-color: #e66b00;
+    }
+
+    @keyframes slideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <!-- Article Header -->
+    <h1>January Promo: Diploma in Caregiving Programs</h1>
+
+    <!-- Hero Image -->
+    <img src="training.jpg" alt="Caregiver Training" class="hero-image">
+
+    <!-- Article Content -->
+    <p>At WeCare Nursing Services, we understand that the journey to becoming a skilled caregiver is more than just a certificate—it’s a commitment to saving lives and supporting families. Yet, for many aspiring healthcare professionals, access to training can be expensive or logistically challenging.</p>
+
+    <p>To make professional caregiving training accessible to everyone, we’ve launched a special January promo across all our diploma programs. During this month, our CPR and First Aid (BLS) basic lifesaving course is completely free, giving you the chance to gain essential life-saving skills without any financial burden.</p>
+
+    <p>Every program is built to equip learners with hands-on skills, combining theoretical knowledge with practical scenarios, so graduates can confidently step into real-world caregiving roles.</p>
+
+    <p>Every student receives a verifiable certificate, giving you the credibility to impress employers, institutions, and families alike. With these certificates, doors to international caregiving opportunities also open, offering students the chance to build a career both locally and abroad.</p>
+
+    <p>Joining a WeCare program isn’t just enrollment—it’s a life-changing decision to step into a career where compassion meets professionalism. Make January the month you invest in yourself, your skills, and your future.</p>
+
+    <!-- CTA Button -->
+    <a href="https://academy.wecarenigeria.com" target="_blank" class="cta-button">Enroll Now</a>
+  </div>
+
+  <!-- Optional JS for scroll-triggered animations -->
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.style.animationPlayState = 'running';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('h1, .hero-image, p, .cta-button').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>

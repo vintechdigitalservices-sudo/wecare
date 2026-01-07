@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | WeCare Nursing Services</title>
+
+  <meta name="description" content="Contact WeCare Nursing Services for professional home healthcare services and caregiver training in Nigeria." />
+
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    :root {
+      --primary-dark: #0b2545;
+      --accent-green: #0a7d4f;
+      --soft-bg: #f8fafc;
+      --text-gray: #556987;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      font-family: 'Inter', sans-serif;
+      background: var(--soft-bg);
+      color: #111;
+    }
+
+    /* ================= MODERN CONTACT SECTION ================= */
+    .contact-page {
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 0 5%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .contact-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .contact-header h1 {
+      font-family: 'Lora', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--primary-dark);
+      margin-bottom: 15px;
+      letter-spacing: -0.5px;
+    }
+
+    .contact-header p {
+      max-width: 650px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: var(--text-gray);
+    }
+
+    .contact-card {
+      width: 100%;
+      max-width: 700px;
+      background: #ffffff;
+      padding: 60px;
+      border-radius: 24px;
+      /* Soft sophisticated shadow */
+      box-shadow: 
+        0 10px 15px -3px rgba(0, 0, 0, 0.05),
+        0 4px 6px -2px rgba(0, 0, 0, 0.02),
+        0 40px 60px -20px rgba(11, 37, 69, 0.1);
+      position: relative;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .input-group {
+      position: relative;
+    }
+
+    .input-group i {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #94a3b8;
+      width: 18px;
+    }
+
+    .input-group.textarea-group i {
+      top: 25px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 16px 18px 16px 48px; /* Extra left padding for icons */
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+      font-size: 1rem;
+      font-family: 'Inter', sans-serif;
+      background-color: #fcfdfe;
+      transition: all 0.3s ease;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--accent-green);
+      background-color: #fff;
+      box-shadow: 0 0 0 4px rgba(10, 125, 79, 0.1);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    .submit-btn {
+      padding: 18px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      background: var(--primary-dark);
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 1.1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .submit-btn:hover {
+      background: var(--accent-green);
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(10, 125, 79, 0.25);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      .contact-page { margin: 40px auto; }
+      .contact-card { padding: 40px 20px; border-radius: 16px; }
+      .contact-header h1 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="contact-page">
+    <div class="contact-header">
+      <h1>Contact WeCare</h1>
+      <p>
+        Have questions about our caregiving services or training programs?
+        Reach out — our team is ready to help you navigate your care journey.
+      </p>
+    </div>
+
+    <div class="contact-card">
+      <form id="contactForm">
+        <div class="input-group">
+          <i data-lucide="user"></i>
+          <input type="text" id="fullName" placeholder="Full Name" required />
+        </div>
+        
+        <div class="input-group">
+          <i data-lucide="mail"></i>
+          <input type="email" id="email" placeholder="Email Address" required />
+        </div>
+
+        <div class="input-group">
+          <i data-lucide="phone"></i>
+          <input type="tel" id="phone" placeholder="Phone Number" required />
+        </div>
+
+        <div class="input-group textarea-group">
+          <i data-lucide="message-square"></i>
+          <textarea id="message" placeholder="How can we help you?" required></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">
+          Send Message <i data-lucide="send" style="width: 18px;"></i>
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <footer id="mainFooter">
+    <div class="footer-wrapper">
+      <div class="footer-container">
+        
+        <div class="footer-column brand-area animate-footer-reveal from-left">
+          <img src="logo.jpg" alt="WeCare Nursing Services Logo" class="footer-logo">
+          <p class="brand-desc">Providing compassionate, reliable, and professional caregiving solutions for families and institutions across Nigeria.</p>
+          <div class="google-rating">
+            <img src="google-icon.png" alt="Google">
+            <span>4.1 ★ Verified Reviews</span>
+          </div>
+        </div>
+  
+        <div class="footer-column animate-footer-reveal from-bottom">
+          <h3>Services</h3>
+          <ul class="footer-links">
+            <li><a href="#live-in-care">Live-in Care</a></li>
+            <li><a href="#daily-home-care">Daily Care Visit</a></li>
+            <li><a href="#post-natal-care">Post-natal Care</a></li>
+            <li><a href="#academy">Caregiver Academy</a></li>
+          </ul>
+        </div>
+  
+        <div class="footer-column animate-footer-reveal from-bottom delay-short">
+          <h3>Company</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#personalized-package">Care Packages</a></li>
+            <li><a href="#certificate-verification">Verification</a></li>
+            <li><a href="updates.html">Latest Updates</a></li>
+          </ul>
+        </div>
+  
+        <div class="footer-column contact-area animate-footer-reveal from-right">
+          <h3>Contact Us</h3>
+          <div class="contact-info">
+            <a href="tel:+2349073190330" class="contact-link">
+              <img src="phon.png" alt="Phone"> +234 907 319 0330
+            </a>
+            <a href="mailto:info@wecarenigeria.com" class="contact-link">
+              <img src="mail.png" alt="Email"> info@wecarenigeria.com
+            </a>
+            <a href="https://maps.google.com" target="_blank" class="contact-link">
+              <img src="location.png" alt="Location"> 11 Regina Ceali Road, Awka
+            </a>
+          </div>
+          
+          <div class="social-block">
+            <div class="social-icons">
+              <a href="https://facebook.com/..." target="_blank"><img src="fbk.png" alt="FB"></a>
+              <a href="https://instagram.com/..." target="_blank"><img src="igm.png" alt="IG"></a>
+              <a href="https://linkedin.com/..." target="_blank"><img src="lkdn.png" alt="LN"></a>
+              <a href="https://tiktok.com/..." target="_blank"><img src="ttk.png" alt="TT"></a>
+              <a href="https://wa.me/..." target="_blank"><img src="whatsapp-icon.png" alt="WA"></a>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+  
+      <div class="footer-bottom">
+        <p>© 2026 WeCare Nursing Services. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+  /* FIXED FOOTER CSS */
+  #mainFooter {
+    width: 100%;
+    background-color: #0b2545;
+    color: #ffffff;
+    padding: 100px 0 30px 0;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+  .footer-wrapper { max-width: 1400px; margin: 0 auto; padding: 0 5%; }
+  .footer-container { display: grid; grid-template-columns: 1.2fr 0.8fr 0.8fr 1.2fr; gap: 40px; align-items: start; }
+  .footer-column h3 { font-family: 'Lora', serif; color: #f7941d; font-size: 1.25rem; margin-bottom: 25px; font-weight: 600; }
+  .footer-logo { width: 150px; margin-bottom: 20px; }
+  .brand-desc { font-size: 0.95rem; line-height: 1.8; color: #bdc3c7; margin-bottom: 25px; }
+  .google-rating { display: flex; align-items: center; gap: 10px; color: #f7941d; font-weight: 600; }
+  .google-rating img { width: 20px; }
+  .footer-links { list-style: none; padding: 0; }
+  .footer-links li { margin-bottom: 15px; }
+  .footer-links a { color: #ffffff; text-decoration: none; font-size: 0.95rem; transition: all 0.3s ease; opacity: 0.85; }
+  .footer-links a:hover { opacity: 1; color: #f7941d; padding-left: 5px; }
+  .contact-info { display: flex; flex-direction: column; gap: 18px; }
+  .contact-link { color: #ffffff !important; text-decoration: none !important; display: flex; align-items: center; gap: 12px; font-size: 0.95rem; }
+  .contact-link img { width: 18px; height: 18px; }
+  .social-icons { display: flex; gap: 15px; margin-top: 35px; }
+  .social-icons a img { width: 24px; height: 24px; transition: transform 0.3s ease; }
+  .social-icons a:hover img { transform: translateY(-5px); }
+  .footer-bottom { margin-top: 80px; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.1); text-align: center; font-size: 0.85rem; color: #95a5a6; }
+  
+  /* Fixed Animation CSS */
+  .animate-footer-reveal { 
+    opacity: 0; 
+    transition: all 0.8s ease-out; 
+    will-change: transform, opacity; 
+  }
+  .from-left { transform: translateX(-60px); }
+  .from-right { transform: translateX(60px); }
+  .from-bottom { transform: translateY(50px); }
+  .animate-footer-reveal.active-footer { opacity: 1; transform: translate(0, 0) !important; }
+  .delay-short { transition-delay: 0.15s; }
+
+  @media (max-width: 1024px) { .footer-container { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 768px) { 
+    #mainFooter { padding: 60px 0 20px 0; } 
+    .footer-container { grid-template-columns: 1fr; text-align: center; } 
+    .from-left, .from-right { transform: translateY(40px); } 
+    .contact-link, .social-icons { justify-content: center; } 
+  }
+  </style>
+
+  <script>
+    lucide.createIcons();
+
+    // FIXED FOOTER SCRIPT (One-time trigger)
+    document.addEventListener('DOMContentLoaded', () => {
+      const footerElements = document.querySelectorAll('.animate-footer-reveal');
+      const observerOptions = { threshold: 0.1 };
+      const footerObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) { 
+            entry.target.classList.add('active-footer'); 
+            // Once visible, stop observing so it doesn't disappear when scrolling away
+            footerObserver.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+      footerElements.forEach(el => footerObserver.observe(el));
+    });
+  </script>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBIM_jh15J2riP1XXtxP4hCmlbx1BqK5-8",
+      authDomain: "wecare--verification.firebaseapp.com",
+      projectId: "wecare--verification",
+      storageBucket: "wecare--verification.firebasestorage.app",
+      messagingSenderId: "198997154830",
+      appId: "1:198997154830:web:a732dc7abc306ed1a5f05f"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const form = document.getElementById("contactForm");
+    const submitBtn = document.getElementById("submitBtn");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = "Sending...";
+
+      try {
+        await addDoc(collection(db, "contact-message"), {
+          fullName: document.getElementById("fullName").value.trim(),
+          email: document.getElementById("email").value.trim(),
+          phone: document.getElementById("phone").value.trim(),
+          message: document.getElementById("message").value.trim(),
+          createdAt: serverTimestamp()
+        });
+
+        window.location.href = "thank-you.html";
+      } catch (err) {
+        alert("Something went wrong. Please try again.");
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = "Send Message";
+        console.error(err);
+      }
+    });
+  </script>
+
+</body>
+</html>

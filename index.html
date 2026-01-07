@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow-x: hidden;">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.wecarenigeria.com/">
+  <title>WeCare Nursing Services | Premium Home Healthcare in Nigeria</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --green: #1e7f4f;
+      --orange: #f7941d;
+      --navy: #0b2545;
+      --white: #ffffff;
+      --milk: #f7f7f7;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { overflow-x: hidden; width: 100%; position: relative; max-width: 100%; }
+    body { font-family: 'Inter', sans-serif; color: #222; }
+    h1, h2, h3 { font-family: 'Lora', serif; }
+
+    /* ================= SLIM HEADER ================= */
+    header { 
+      position: fixed; top: 0; width: 100%; background: transparent; z-index: 2000; 
+      padding: 6px 24px; height: 60px; display: flex; justify-content: space-between; 
+      align-items: center; transition: all 0.4s ease;
+    }
+    header.scrolled {
+      background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+    .logo { height: 100px; display: flex; align-items: center; position: relative; top: 15px; }
+    .logo img { height: 100px; width: auto; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); }
+    @media (max-width: 768px) { .logo { top: 10px; } .logo img { height: 80px; } }
+    .menu-btn { font-size: 32px; cursor: pointer; color: #fff; user-select: none; transition: color 0.3s ease; }
+    header.scrolled .menu-btn { color: var(--navy); }
+
+    /* NAV DRAWER */
+    .nav-drawer { position: fixed; top: 0; left: -100%; width: 260px; height: 100%; background: #fff; padding: 32px 24px; box-shadow: 4px 0 16px rgba(0,0,0,0.12); z-index: 2500; transition: left 0.4s ease; display: flex; flex-direction: column; }
+    .nav-drawer.active { left: 0; }
+    .nav-drawer a { display: block; margin-bottom: 22px; color: #0b2545; text-decoration: none; font-size: 18px; font-weight: 500; transform: translateX(-30px); opacity: 0; transition: all 0.4s ease; }
+    .nav-drawer.active a { transform: translateX(0); opacity: 1; }
+    .close-drawer { font-size: 30px; color: var(--navy); cursor: pointer; align-self: flex-end; margin-bottom: 20px; }
+
+    /* ================= HERO ================= */
+    .hero { position: relative; height: 100vh; padding: 0 8%; display: flex; align-items: center; overflow: hidden; }
+    .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; filter: brightness(1.1); }
+    .hero::after { content: ""; position: absolute; inset: 0; background: rgba(30,127,79,0.55); z-index: 1; }
+    .hero-content { position: relative; z-index: 2; max-width: 700px; color: #fff; }
+    .hero h1 { font-size: clamp(2.2rem, 4vw, 3.5rem); margin-bottom: 12px; transform: translateX(80px); opacity: 0; animation: slideRight 1s ease forwards; }
+    .hero p { margin-bottom: 28px; transform: translateX(80px); opacity: 0; animation: slideRight 1s ease forwards 0.2s; }
+    .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 32px; }
+    .hero-buttons a { padding: 12px 22px; border-radius: 4px; color: #fff; text-decoration: none; font-weight: 500; }
+    .btn-green { background: var(--green); }
+    .btn-orange { background: var(--orange); }
+    .btn-navy { background: var(--navy); }
+    .social-strip { display: flex; align-items: center; gap: 14px; transform: translateX(-80px); opacity: 0; animation: slideLeft 1s ease forwards 0.6s; }
+    .social-strip span { width: 40px; height: 1px; background: #fff; opacity: 0.7; }
+    .social-strip img { width: 22px; height: 22px; }
+    @keyframes slideRight { to { transform: translateX(0); opacity: 1; } }
+    @keyframes slideLeft { to { transform: translateX(0); opacity: 1; } }
+
+    /* ================= SECTIONS & ANIMATIONS ================= */
+    #about { padding: 60px 8%; text-align: center; }
+    #about h2 { margin-bottom: 30px; color: var(--navy); font-size: 3rem; font-weight: 700; }
+    .about-text.scroll-animate { opacity: 0; transform: translateX(-80px); transition: all 0.8s ease; display: inline-block; max-width: 700px; margin: 0 auto; text-align: left; }
+    .about-text.scroll-animate.show { opacity: 1; transform: translateX(0); }
+    .about-image.scroll-animate { opacity: 0; transform: translateX(80px); transition: all 0.8s ease; max-width: 700px; margin: 30px auto 0; }
+    .about-image.scroll-animate.show { opacity: 1; transform: translateX(0); }
+    .about-image img { width: 100%; border-radius: 8px; object-fit: cover; }
+    .about-text a { display: inline-block; margin-top: 12px; padding: 10px 20px; background: var(--green); color: #fff; border-radius: 4px; text-decoration: none; }
+
+    /* STATS */
+    .stats { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; padding: 60px 8%; background: var(--milk); }
+    .stat-card.scroll-animate { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; min-width: 200px; flex: 1; text-align: center; background: var(--milk); padding: 24px; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .stat-card.scroll-animate.show { opacity: 1; transform: translateY(0); }
+    .stat-number { font-size: 2.5rem; color: var(--green); margin-bottom: 8px; }
+    .stat-text { color: var(--orange); font-weight: 500; }
+    .typing { display: inline-block; border-right: 2px solid var(--green); white-space: nowrap; overflow: hidden; font-size: 2rem; color: var(--green); min-height: 2.4rem; }
+
+    /* WHY TRUST US */
+    #why-trust-us { padding: 60px 8%; background: #fff; text-align: center; }
+    .trust-container { max-width: 1000px; margin: 0 auto; }
+    .trust-header { font-size: 2.2rem; color: var(--navy); margin-bottom: 10px; }
+    .trust-subtext { color: #555; max-width: 550px; margin: 0 auto 40px; font-size: 1rem; line-height: 1.5; }
+    .trust-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+    .trust-card { 
+      background: #fff; padding: 25px 20px; border-radius: 12px; 
+      box-shadow: 0 6px 20px rgba(0,0,0,0.04); border-top: 4px solid var(--green); 
+      transition: all 0.4s ease; text-align: center; 
+    }
+    .trust-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
+    .trust-icon { width: 45px; height: 45px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px auto; }
+    .icon-green { background: rgba(30, 127, 79, 0.08); color: var(--green); }
+    .icon-orange { background: rgba(247, 148, 29, 0.08); color: var(--orange); }
+    .icon-navy { background: rgba(11, 37, 69, 0.08); color: var(--navy); }
+    .trust-card h3 { font-size: 1.2rem; color: var(--navy); margin-bottom: 10px; }
+    .trust-card p { font-size: 0.9rem; color: #444; line-height: 1.6; }
+
+    /* HEALTHCARE */
+    #healthcare { padding: 60px 8% 20px 8%; display:flex; align-items:center; flex-wrap:wrap; gap:40px; }
+    .health-text.scroll-animate, .health-image.scroll-animate { opacity: 0; transform: translateX(80px); transition: all 0.8s ease; }
+    .health-text.scroll-animate.show, .health-image.scroll-animate.show { opacity: 1; transform: translateX(0); }
+    .health-image { flex:1; min-width:300px; max-width:600px; height:250px; border-radius:8px; overflow:hidden; position:relative; }
+    .health-bg { width:100%; height:100%; object-fit:cover; transition: transform 12s ease; }
+    .health-bg.scroll-animate.show { transform: scale(1.08); }
+
+    /* SERVICES */
+    #services { padding: 40px 8% 60px 8%; text-align: center; overflow: hidden; }
+    #services .green-line { width: 40px; height: 2px; background: var(--green); margin: 0 auto 15px; }
+    .service-grid { display: grid; gap: 20px; grid-template-columns: repeat(2, 1fr); max-width: 800px; margin: 0 auto; }
+    .service-card { border: 1px solid #ddd; border-radius: 4px; padding: 30px 15px; background: #fff; text-align: center; transition: all 0.8s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.03); opacity: 0; }
+    .slide-left { transform: translateX(-100px); }
+    .slide-right { transform: translateX(100px); }
+    .service-card.show { transform: translateX(0); opacity: 1; }
+    .service-card img { width: 80px; height: 80px; margin-bottom: 20px; object-fit: contain; }
+    .service-card h3 { font-size: 1.1rem; color: var(--navy); font-weight: 500; font-family: 'Inter', sans-serif; }
+
+    /* PERSONALIZED PACKAGE */
+    .personalized-package { max-width: 420px; margin: 60px auto; padding: 0 20px; text-align: center; }
+    .package-title { font-family: 'Lora', serif; font-size: 24px; color: var(--navy); margin-bottom: 18px; }
+    .package-card { border: 2px solid var(--green); border-radius: 14px; padding: 22px; background: #ffffff; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+    .package-img { width: 100%; max-width: 220px; margin: 0 auto 14px; display: block; }
+    .package-card p { font-size: 14px; color: #1f2d3d; line-height: 1.6; margin-bottom: 10px; }
+    .btn-view-packages { 
+      display: inline-block; padding: 10px 24px; border: 2px solid var(--green); 
+      color: var(--green); text-decoration: none; border-radius: 6px; 
+      font-weight: 600; font-size: 0.9rem; margin-top: 10px; transition: all 0.3s;
+    }
+    .btn-view-packages:hover { background: var(--green); color: #fff; }
+    .package-btn-bottom { display: inline-block; margin-top: 18px; padding: 12px 34px; background: var(--green); color: #fff; text-decoration: none; border-radius: 6px; font-weight: 500; transition: background 0.3s ease; }
+
+    /* REVIEWS STYLING */
+    .review-card { 
+      min-width: 100%; 
+      padding: 30px; 
+      box-sizing: border-box; 
+      background: #fff; 
+      border-radius: 12px; 
+      border: 1px solid #eee;
+      border-top: 6px solid var(--green);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .slider-arrow:hover { color: var(--green); }
+    .review-desc { max-width: 600px; margin: 0 auto 40px; color: #555; line-height: 1.6; font-size: 1rem; }
+
+    /* PARTNERS STYLING */
+    .partners-track{
+      display:flex;
+      align-items:center;
+      gap:80px;
+      width:max-content;
+      animation: scrollPartners 30s linear infinite;
+    }
+    .partners-track img{
+      height:58px;
+      width:auto;
+      object-fit:contain;
+      transition:all 0.3s ease;
+    }
+    .partners-track img:hover{
+      transform: scale(1.05);
+    }
+    @keyframes scrollPartners{
+      from{ transform:translateX(0); }
+      to{ transform:translateX(-50%); }
+    }
+
+    /* JOIN TEAM STYLING - UPDATED */
+    .join-team-section{
+      margin:0;
+      width:100%;
+      padding:80px 8%;
+      background: #0b2545; /* Dark background to prevent visual scroll bugs and contrast white title */
+      overflow:hidden;
+    }
+    .join-team-title{
+      font-family:'Lora', serif;
+      font-size:2.5rem;
+      color:#ffffff;
+      text-align:right;
+      margin-bottom:24px;
+      transform:translateX(80px);
+      opacity:0;
+      transition:all 0.9s ease;
+    }
+    .join-team-hero{
+      position:relative;
+      width:100%;
+      min-height:320px;
+      display:flex;
+      align-items:center;
+      justify-content:flex-start;
+      overflow:hidden;
+      background:url("join-team.jpg") center/cover no-repeat;
+      border-radius: 12px;
+    }
+    .join-team-overlay{
+      position:absolute;
+      inset:0;
+      background:rgba(30,127,79,0.45);
+    }
+    .join-team-content{
+      position:relative;
+      max-width:600px;
+      padding:0 32px;
+      transform:translateX(-80px);
+      opacity:0;
+      transition:all 0.9s ease;
+      color:#ffffff;
+    }
+    .join-team-text{
+      font-family:'Lora', serif; /* Matching Header Style */
+      font-size:1.5rem;
+      font-weight:700; /* As bold as header */
+      line-height:1.4;
+      margin-bottom:18px;
+    }
+    .join-team-btn{
+      display:inline-block;
+      background:#f7941d;
+      color:#ffffff;
+      padding:12px 28px;
+      border-radius:6px;
+      text-decoration:none;
+      font-weight:600;
+      transition:transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .join-team-btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 6px 16px rgba(0,0,0,0.25);
+    }
+    .animate-join.show .join-team-title, .animate-join.show .join-team-content{
+      transform:translateX(0);
+      opacity:1;
+    }
+
+    .animate-on-scroll { opacity: 0; transform: translateY(35px); transition: all 0.8s ease; }
+    .animate-on-scroll.show { opacity: 1; transform: translateY(0); }
+
+    @media (max-width:768px){
+      #services h2 { font-size: 2rem; }
+      .service-grid { gap: 12px; }
+      .trust-header { font-size: 2rem; }
+      .slider-arrow { font-size: 1.5rem; padding: 0 5px; width: 40px; height: 40px; }
+      .partners-track img { height: 45px; }
+      .partners-track { gap: 40px; }
+      .join-team-title { font-size: 2rem; text-align: center; }
+      .join-team-text { font-size: 1.2rem; }
+    }
+    /* ================= ACADEMY SECTION ================= */
+.academy-section{
+  padding: 90px 8%;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.academy-inner{
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* TEXT */
+.academy-title{
+  font-family: 'Lora', serif;
+  font-size: 3rem;
+  color: var(--navy);
+  line-height: 1.1;
+  margin-bottom: 24px;
+}
+
+.academy-copy{
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #444;
+  max-width: 720px;
+  margin: 0 auto 45px;
+}
+
+/* IMAGE */
+.academy-image-wrapper{
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  transform: translateY(60px);
+  opacity: 0;
+  transition: transform 0.8s ease, opacity 0.8s ease;
+}
+
+.academy-image-wrapper img{
+  width: 100%;
+  height: auto;
+  display: block;
+  transform: scale(1);
+  transition: transform 1.6s ease;
+}
+
+/* BUTTON */
+.academy-btn{
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--orange);
+  color: #fff;
+  padding: 14px 34px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+/* ANIMATION STATES */
+.animate-academy{
+  transform: translateY(60px);
+  opacity: 0;
+  transition: transform 0.8s ease, opacity 0.8s ease;
+}
+
+.animate-academy.show{
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.animate-academy.show .academy-image-wrapper{
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.animate-academy.show .academy-image-wrapper img{
+  transform: scale(1.04); /* subtle zoom — anything more is amateur */
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .academy-title{ font-size: 2.3rem; }
+}
+
+
+  /* Global fix to ensure the whole page respects the width */
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  </style>
+</head>
+
+<body>
+<header id="mainHeader">
+  <div class="menu-btn" onclick="toggleNav()">☰</div>
+  <a href="index.html" class="logo">
+    <img src="logo.png" alt="WeCare Nursing Services Logo">
+  </a>
+</header>
+<header id="mainHeader">
+  <div class="menu-btn" onclick="toggleNav()">☰</div>
+  <a href="index.html" class="logo">
+    <img src="logo.png" alt="WeCare Nursing Services Logo">
+  </a>
+</header>
+<header id="mainHeader">
+  <div class="menu-btn" onclick="toggleNav()">☰</div>
+  <a href="index.html" class="logo">
+    <img src="logo.png" alt="WeCare Nursing Services Logo">
+  </a>
+</header>
+
+<nav class="nav-drawer" id="navDrawer">
+  <div class="close-drawer" onclick="toggleNav()">✕</div>
+  <a href="index.html">Home</a>
+  <a href="#about">About</a>
+  <a href="#stats">Stats</a>
+  <a href="#why-trust-us">Why Trust Us</a>
+  <a href="#healthcare">Healthcare</a>
+  <a href="#services">Services</a>
+  <a href="#personalized-package">Care Packages</a>
+  <a href="#client-reviews">Reviews</a>
+  <a href="#partners">Partners</a>
+  <a href="#join-team">Join Our Team</a>
+  <a href="#academy">Academy</a>
+  <a href="#certificate-verification">Certificate Verification</a>
+  <a href="updates.html">Blog</a>
+  <a href="contact.html">Contact Us</a>
+</nav>
+<section class="hero">
+  <video autoplay muted loop playsinline poster="hero-bg.jpg" class="hero-video">
+    <source src="hero-video.mp4" type="video/mp4">
+  </video>
+  <div class="hero-content">
+    <h1>Premium home healthcare for the sick and elderly</h1>
+    <p>Get the best care you deserve</p>
+    <div class="hero-buttons">
+      <a href="#services" class="btn-green">Services</a>
+      <a href="#about" class="btn-orange">Learn More</a>
+      <a href="contact.html" class="btn-navy">Contact Us</a>
+    </div>
+    <div class="social-strip">
+      <span></span>
+      <a href="https://www.facebook.com/share/1BvKFXnkqs/" target="_blank"><img src="fb.png" alt="Facebook"></a>
+      <a href="https://www.instagram.com/wecare70" target="_blank"><img src="ig.png" alt="Instagram"></a>
+      <a href="https://www.linkedin.com/company/wecare-nursing-services/" target="_blank"><img src="ln.png" alt="LinkedIn"></a>
+      <a href="https://vm.tiktok.com/ZSHEBpSUJbAFP-evXv4/" target="_blank"><img src="tt.png" alt="TikTok"></a>
+      <a href="mailto:info@wecarenigeria.com"><img src="email.png" alt="Email"></a>
+      <a href="https://wa.me/2349073190330" target="_blank"><img src="whatsapp.png" alt="WhatsApp"></a>
+      <a href="tel:+2349073190330"><img src="phone.png" alt="Call"></a>
+      <span></span>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <h2>Who We Are</h2>
+  <div class="about-text scroll-animate">
+    <p>WeCare Nursing Services is a Nigerian-based home care agency that provides comprehensive home healthcare services to the sick and elderly, with our dedicated team of highly trained nurses who are passionate about providing personalized care right in the comfort of your home.</p>
+    <p>We take out the stress and burden of professional day-to-day care and give you peace of mind.</p>
+    <a href="about.html">More about us</a>
+  </div>
+  <div class="about-image scroll-animate">
+    <img src="about-preview.jpg" alt="Who We Are">
+  </div>
+</section>
+<section id="stats"
+<section class="stats">
+  <div class="stat-card scroll-animate" id="stat-families">
+    <div class="stat-number" id="families">0+</div>
+    <div class="stat-text">Satisfied Families Served</div>
+  </div>
+  <div class="stat-card scroll-animate" id="stat-students">
+    <div class="stat-number" id="students">0+</div>
+    <div class="stat-text">Students Trained</div>
+  </div>
+  <div class="stat-card scroll-animate" id="stat-team">
+    <div class="typing" id="typing"></div>
+    <div class="stat-text">professional nurses and caregivers</div>
+  </div>
+</section>
+
+<section id="why-trust-us">
+  <div class="trust-container">
+    <h2 class="trust-header">Why Families Trust Us</h2>
+    <p class="trust-subtext">As ambassadors of care, we are committed to the standards that keep your loved ones safe and happy.</p>
+    <div class="trust-cards">
+      <div class="trust-card animate-on-scroll">
+        <div class="trust-icon icon-green"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L15.09 7H22L16.545 11.545L18.18 18.455L12 14.91L5.82 18.455L7.455 11.545L2 7H8.91L12 0Z"/></svg></div>
+        <h3>Professionalism</h3>
+        <p>Our nurses are strictly vetted and supervised to deliver clinical excellence.</p>
+      </div>
+      <div class="trust-card animate-on-scroll">
+        <div class="trust-icon icon-orange"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
+        <h3>Compassion</h3>
+        <p>We treat every client like family, offering companionship that warms the heart.</p>
+      </div>
+      <div class="trust-card animate-on-scroll">
+        <div class="trust-icon icon-navy"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M6 12l4 4 8-8"/></svg></div>
+        <h3>Reliability</h3>
+        <p>Consistency is our promise. We show up on time and follow care plans strictly.</p>
+      </div>
+      <div class="trust-card animate-on-scroll">
+        <div class="trust-icon icon-green"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h18v2H3V3zm0 16h18v2H3v-2zm0-8h18v2H3v-2z"/></svg></div>
+        <h3>Transparency</h3>
+        <p>Real-time updates and health logs for families, especially those living abroad.</p>
+      </div>
+      <div class="trust-card animate-on-scroll">
+        <div class="trust-icon icon-orange"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 15s1.5 2 4 2 4-2 4-2"/><circle cx="9" cy="10" r="1" fill="currentColor"/><circle cx="15" cy="10" r="1" fill="currentColor"/></svg></div>
+        <h3>Peace Of Mind</h3>
+        <p>Families trust us because they don’t have to worry. From professional supervision to consistent communication, we ensure loved ones are safe, comfortable, and properly cared for—whether you’re nearby or miles away.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="healthcare">
+  <div class="health-text scroll-animate">
+    <h2>Get the best health care you deserve</h2>
+    <p>We offer both Live-in Care and Daily Care Visit with 24/7 attention.</p>
+  </div>
+  <div class="health-image scroll-animate">
+    <img src="healthcare-bg.jpg" alt="Healthcare" class="health-bg" loading="lazy">
+  </div>
+</section>
+
+<section id="services">
+  <div class="green-line"></div>
+  <h2>Our Services</h2>
+  <div class="service-grid">
+    <div class="service-card slide-left"><img src="live-in-care.png" alt="Live-in"><h3>Live-in Homecare Services</h3></div>
+    <div class="service-card slide-right"><img src="daily-care.png" alt="Daily"><h3>Daily Home Care Visit</h3></div>
+    <div class="service-card slide-left"><img src="post-natal.png" alt="Post-Natal"><h3>Post-Natal Care</h3></div>
+    <div class="service-card slide-right"><img src="caregiver-academy.png" alt="Academy"><h3>Caregiver Academy</h3></div>
+  </div>
+</section>
+<section id="personalized-package"
+<section class="personalized-package animate-on-scroll">
+  <h2 class="package-title">Which Care Package Serves Your Need?</h2>
+  <div class="package-card">
+    <img src="personalized-package.png" alt="Personalized Home Care" class="package-img">
+    <p>We personalize our care plan based on the patient's need.</p>
+    <p>Contact us to discuss how our care packages may serve your needs.</p>
+    <a href="packages.html" class="btn-view-packages">View Packages</a>
+  </div>
+  <a href="https://wa.me/2349073190330" target="_blank" class="package-btn-bottom">Contact Us For A Personalized Package</a>
+</section>
+
+<section id="client-reviews" style="padding:80px 0; background:#f7f7f7; text-align:center; position: relative; overflow: hidden;">
+  <h2 style="font-family:'Lora', serif; font-size:2.5rem; color:#0b2545; margin-bottom:15px; padding: 0 8%;">
+    What Our Clients Say
+  </h2>
+  <p class="review-desc" style="padding: 0 8%;">Trusted by families who rely on us daily to care for their elderly loved ones with professionalism, compassion, and consistency.</p>
+
+  <div class="slider-arrow prev" style="position:absolute; top:60%; left:20px; transform:translateY(-50%); font-size:2.5rem; cursor:pointer; z-index:100; color: #aaa; background: rgba(255,255,255,0.8); border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+    &#10094;
+  </div>
+
+  <div class="slider-arrow next" style="position:absolute; top:60%; right:20px; transform:translateY(-50%); font-size:2.5rem; cursor:pointer; z-index:100; color: #aaa; background: rgba(255,255,255,0.8); border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+    &#10095;
+  </div>
+
+  <div class="reviews-slider-wrapper" style="overflow:hidden; max-width:900px; margin:0 auto; padding: 10px;">
+    <div class="reviews-slider" style="display:flex; transition:transform 0.5s ease;">
+      <div class="review-card">
+        <p style="font-family:'Inter', sans-serif; font-size:1rem; color:#1f2d3d; line-height:1.6; margin-bottom:12px;">
+          We care nurses are good and dedicated. I recommend them to anyone who needs a care giver.
+        </p>
+        <strong style="display:block; margin-bottom:6px; color:#0b2545;">Uju Onyali</strong>
+        <span style="color:#f7941d;">★★★★★</span>
+      </div>
+
+      <div class="review-card">
+        <p style="font-family:'Inter', sans-serif; font-size:1rem; color:#1f2d3d; line-height:1.6; margin-bottom:12px;">
+          Thank you Wecare! I love how professional you guys are. The Nanny you sent to us is so diligent and humble and she takes care our baby with love and attention.
+        </p>
+        <strong style="display:block; margin-bottom:6px; color:#0b2545;">Precious Gil</strong>
+        <span style="color:#f7941d;">★★★★☆</span>
+      </div>
+
+      <div class="review-card">
+        <p style="font-family:'Inter', sans-serif; font-size:1rem; color:#1f2d3d; line-height:1.6; margin-bottom:12px;">
+          We Care has been truly supportive in providing caregiving services for my 80-year-old dad. I’m especially grateful for how your team took feedback seriously and acted on it promptly.
+        </p>
+        <strong style="display:block; margin-bottom:6px; color:#0b2545;">Adaeze Ume</strong>
+        <span style="color:#f7941d;">★★★★★</span>
+      </div>
+
+      <div class="review-card">
+        <p style="font-family:'Inter', sans-serif; font-size:1rem; color:#1f2d3d; line-height:1.6; margin-bottom:12px;">
+          Both the academy and the services rendered are top notched 👍🏾🥰
+        </p>
+        <strong style="display:block; margin-bottom:6px; color:#0b2545;">Opuene Daminikparo Arunibebh</strong>
+        <span style="color:#f7941d;">★★★★★</span>
+      </div>
+
+      <div class="review-card">
+        <p style="font-family:'Inter', sans-serif; font-size:1rem; color:#1f2d3d; line-height:1.6; margin-bottom:12px;">
+          We care nursing services is a blessing to humanity. The nurse that takes care of my baby since he was a newborn does it with so much love and attention.
+        </p>
+        <strong style="display:block; margin-bottom:6px; color:#0b2545;">Monalisa Nwankwo</strong>
+        <span style="color:#f7941d;">★★★★★</span>
+      </div>
+
+      <div class="review-card">
+        <p style="font-family:'Inter', sans-serif; font-size:1rem; color:#1f2d3d; line-height:1.6; margin-bottom:12px;">
+          Brilliant service, speedy response. The nurse they sent us did a great job.
+        </p>
+        <strong style="display:block; margin-bottom:6px; color:#0b2545;">Nkiru Jibuaku</strong>
+        <span style="color:#f7941d;">★★★★★</span>
+      </div>
+
+      <div class="review-card">
+        <p style="font-family:'Inter', sans-serif; font-size:1rem; color:#1f2d3d; line-height:1.6; margin-bottom:12px;">
+          Thank you for your continued exceptional service delivery. Always available and willing to care.
+        </p>
+        <strong style="display:block; margin-bottom:6px; color:#0b2545;">Eke Okwukwe Favour</strong>
+        <span style="color:#f7941d;">★★★★★</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:30px; display:flex; align-items:center; justify-content:center; gap:12px; padding: 0 8%;">
+    <img src="google-icon.png" alt="Google" style="width:32px; height:32px;">
+    <div style="text-align:left;">
+      <div style="color:#f7941d; font-size:1.3rem; letter-spacing:2px;">★★★★☆</div>
+      <span style="font-family:'Inter', sans-serif; font-size:1rem; color:#1f2d3d;">4.1 Google Rating</span>
+    </div>
+  </div>
+</section>
+<section id="partners" style="padding:45px 0; background:#ffffff; overflow:hidden;">
+  <h2 style="text-align:center; font-family:'Lora', serif; font-size:2rem; color:#0b2545; margin-bottom:25px;">
+    Our Trusted Partners
+  </h2>
+
+  <div class="partners-slider" style="width:100%; overflow:hidden;">
+    <div class="partners-track">
+      <img src="partner1.png" alt="Partner 1">
+      <img src="partner2.png" alt="Partner 2">
+      <img src="partner3.png" alt="Partner 3">
+      <img src="partner4.png" alt="Partner 4">
+
+      <img src="partner1.png" alt="Partner 1">
+      <img src="partner2.png" alt="Partner 2">
+      <img src="partner3.png" alt="Partner 3">
+      <img src="partner4.png" alt="Partner 4">
+    </div>
+  </div>
+</section>
+<!-- ================== GLOBE SECTION ================== -->
+<section class="globe-section">
+  <div class="globe-image-wrapper">
+    <img src="globe-available.jpg" alt="WeCare available globally" class="globe-image">
+  </div>
+</section>
+
+<style>
+  .globe-section {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    margin: 60px 0;
+  }
+
+  .globe-image-wrapper {
+    opacity: 0;
+    transform: translateX(80px);
+    transition: all 1s ease-out;
+  }
+
+  .globe-image-wrapper.active-globe {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .globe-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+</style>
+
+<script>
+  // Intersection Observer to slide in image from right
+  const globeSection = document.querySelector('.globe-image-wrapper');
+
+  const globeObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          globeSection.classList.add('active-globe');
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
+
+  globeObserver.observe(globeSection);
+</script>
+
+<section id="join-team"
+<section class="join-team-section animate-join">
+  <h2 class="join-team-title">Join Our Team</h2>
+  <div class="join-team-hero">
+    <div class="join-team-overlay"></div>
+    <div class="join-team-content">
+      <p class="join-team-text">Are you a Nurse and would like to work with us?</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSd8qOjn6CI2uoFW2W324vWePq25QdXcxlSj2WYR2thzU2TZbA/viewform?usp=header" target="_blank" class="join-team-btn">Apply Here</a>
+    </div>
+  </div>
+</section>
+<section id="academy" class="academy-section animate-academy">
+  <div class="academy-inner">
+
+    <h2 class="academy-title">
+      Become a<br>
+      Certified<br>
+      Caregiver
+    </h2>
+
+    <p class="academy-copy">
+      At WeCare Academy, we train caregivers and equip them with the relevant
+      knowledge and skills to care for the sick and elderly.
+      Our certificate is globally recognized, and our training is flexible to
+      accommodate anybody, no matter their busy schedule.
+    </p>
+
+    <div class="academy-image-wrapper">
+      <img src="academy.jpg" alt="WeCare Academy Training">
+      <a
+        href="https://academy.wecarenigeria.com"
+        target="_blank"
+        class="academy-btn"
+      >
+        Enroll Now
+      </a>
+    </div>
+
+  </div>
+</section>
+<section id="certificate-verification">
+  <h2 class="cert-header animate-cert-header">CERTIFICATE VERIFICATION</h2>
+  
+  <div class="cert-video-section animate-cert-video">
+    <video class="cert-video" muted loop playsinline id="certVideo">
+      <source src="certificate-verification.mp4" type="video/mp4">
+    </video>
+    
+    <div class="cert-overlay"></div>
+    
+    <div class="cert-content">
+      <p class="cert-text">
+        At WeCare Academy, certification goes beyond completion.<br>
+        Each graduate receives a verifiable credential, allowing employers, families, and institutions to independently confirm certificate authenticity through our secure verification portal.
+      </p>
+      <a href="https://verify.wecarenigeria.com" target="_blank" class="cert-btn">Verify a Certificate</a>
+    </div>
+  </div>
+</section>
+
+<style>
+#certificate-verification {
+  width: 100%;
+  margin: 60px 0;
+  overflow: hidden;
+}
+
+.cert-header {
+  font-family: 'Lora', serif;
+  font-size: 2.8rem;
+  color: #0b2545;
+  text-align: center;
+  margin-bottom: 30px;
+  opacity: 0;
+  transform: translateX(100px); /* Slide from Right */
+  transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.cert-video-section {
+  position: relative;
+  width: 100%;
+  /* 16:9 Aspect Ratio Calculation: (9 / 16) * 100 = 56.25 */
+  height: 56.25vw; 
+  max-height: 600px; /* Limits height on very large desktop screens */
+  min-height: 350px; /* Prevents it from getting too small on mobile */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cert-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Change from 'cover' to 'fill' or 'contain' if you don't want any cropping, 
+     but 'cover' is usually best for background videos to ensure no white gaps. */
+  object-fit: cover; 
+  z-index: 0;
+}
+
+.cert-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(11, 37, 69, 0.7); /* Navy Blue Veil */
+  z-index: 1;
+}
+
+.cert-content {
+  position: relative;
+  z-index: 2;
+  max-width: 850px;
+  padding: 0 40px;
+  text-align: center;
+  opacity: 0;
+  transform: translateX(-100px); /* Slide from Left */
+  transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.cert-text {
+  font-family: 'Lora', serif;
+  font-size: clamp(1rem, 2vw, 1.35rem); /* Scales font based on screen size */
+  font-weight: 500;
+  line-height: 1.7;
+  color: #ffffff;
+  margin-bottom: 30px;
+}
+
+.cert-btn {
+  display: inline-block;
+  background: #f7941d;
+  color: #fff;
+  padding: 14px 36px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.cert-btn:hover {
+  background: #e68510;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* ANIMATION STATES */
+.animate-cert-header.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.animate-cert-video.show .cert-content {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (max-width: 768px) {
+  .cert-header { font-size: 2rem; }
+  .cert-video-section { 
+    height: 56.25vw; /* Maintains 16:9 on mobile */
+  }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const certHeaderEl = document.querySelector('.animate-cert-header');
+  const certSectionEl = document.querySelector('.animate-cert-video');
+  const videoEl = document.getElementById('certVideo');
+
+  const certObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        certHeaderEl.classList.add('show');
+        certSectionEl.classList.add('show');
+        if (videoEl) videoEl.play();
+      } else {
+        certHeaderEl.classList.remove('show');
+        certSectionEl.classList.remove('show');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  certObserver.observe(document.getElementById('certificate-verification'));
+});
+</script>
+<section class="news-update-section">
+  <h2 class="news-header animate-news-right">Latest Updates from WeCare</h2>
+  <p class="news-description animate-news-bottom">
+    Stay up to date with the latest news, events, and announcements from WeCare Nursing Services.
+  </p>
+
+  <div class="news-content animate-news-left">
+    <h3 class="news-subheader">New Caregiver Training Program Launched</h3>
+    <img src="training.jpg" alt="Caregiver Training" class="news-image">
+    <p class="news-text">
+      At WeCare Academy, we've launched a new caregiver training program designed to equip aspiring nurses and caregivers with the latest skills for high-quality home healthcare. Join the program and be part of a generation of highly trained, professional caregivers ready to make a difference.
+    </p>
+    <a href="updates.html" class="news-btn">Read More</a>
+  </div>
+</section>
+<footer id="mainFooter">
+  <div class="footer-wrapper">
+    <div class="footer-container">
+      
+      <div class="footer-column brand-area animate-footer-reveal from-left">
+        <img src="logo.jpg" alt="WeCare Nursing Services Logo" class="footer-logo">
+        <p class="brand-desc">Providing compassionate, reliable, and professional caregiving solutions for families and institutions across Nigeria.</p>
+        <div class="google-rating">
+          <img src="google-icon.png" alt="Google">
+          <span>4.1 ★ Verified Reviews</span>
+        </div>
+      </div>
+
+      <div class="footer-column animate-footer-reveal from-bottom">
+        <h3>Services</h3>
+        <ul class="footer-links">
+          <li><a href="#live-in-care">Live-in Care</a></li>
+          <li><a href="#daily-home-care">Daily Care Visit</a></li>
+          <li><a href="#post-natal-care">Post-natal Care</a></li>
+          <li><a href="#academy">Caregiver Academy</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column animate-footer-reveal from-bottom delay-short">
+        <h3>Company</h3>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#personalized-package">Care Packages</a></li>
+          <li><a href="#certificate-verification">Verification</a></li>
+          <li><a href="updates.html">Latest Updates</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column contact-area animate-footer-reveal from-right">
+        <h3>Contact Us</h3>
+        <div class="contact-info">
+          <a href="tel:+2349073190330" class="contact-link">
+            <img src="phon.png" alt="Phone"> +234 907 319 0330
+          </a>
+          <a href="mailto:info@wecarenigeria.com" class="contact-link">
+            <img src="mail.png" alt="Email"> info@wecarenigeria.com
+          </a>
+          <a href="https://maps.google.com" target="_blank" class="contact-link">
+            <img src="location.png" alt="Location"> 11 Regina Ceali Road, Awka
+          </a>
+        </div>
+        
+        <div class="social-block">
+          <div class="social-icons">
+            <a href="https://facebook.com/..." target="_blank"><img src="fbk.png" alt="FB"></a>
+            <a href="https://instagram.com/..." target="_blank"><img src="igm.png" alt="IG"></a>
+            <a href="https://linkedin.com/..." target="_blank"><img src="lkdn.png" alt="LN"></a>
+            <a href="https://tiktok.com/..." target="_blank"><img src="ttk.png" alt="TT"></a>
+            <a href="https://wa.me/..." target="_blank"><img src="whatsapp-icon.png" alt="WA"></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 WeCare Nursing Services. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+/* ================= FOOTER BASE (EDGE TO EDGE) ================= */
+#mainFooter {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background-color: #0b2545;
+  color: #ffffff;
+  padding: 100px 0 30px 0;
+  font-family: 'Inter', sans-serif;
+  overflow-x: clip; /* Cleanly stops horizontal scroll for animations */
+}
+
+.footer-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr 0.8fr 1.2fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* TYPOGRAPHY */
+.footer-column h3 {
+  font-family: 'Lora', serif;
+  color: #f7941d;
+  font-size: 1.25rem;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+.footer-logo { width: 150px; margin-bottom: 20px; }
+.brand-desc { font-size: 0.95rem; line-height: 1.8; color: #bdc3c7; margin-bottom: 25px; }
+.google-rating { display: flex; align-items: center; gap: 10px; color: #f7941d; font-weight: 600; }
+.google-rating img { width: 20px; }
+
+.footer-links { list-style: none; padding: 0; }
+.footer-links li { margin-bottom: 15px; }
+.footer-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  opacity: 0.85;
+}
+.footer-links a:hover { opacity: 1; color: #f7941d; transform: translateX(5px); display: inline-block; }
+
+/* CONTACT FIX */
+.contact-info { display: flex; flex-direction: column; gap: 18px; }
+.contact-link {
+  color: #ffffff !important;
+  text-decoration: none !important;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+.contact-link:hover { color: #f7941d !important; }
+.contact-link img { width: 18px; height: 18px; }
+
+.social-icons { display: flex; gap: 15px; margin-top: 35px; }
+.social-icons a img { width: 24px; height: 24px; transition: transform 0.3s ease; }
+.social-icons a:hover img { transform: translateY(-5px); }
+
+.footer-bottom {
+  margin-top: 80px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  font-size: 0.85rem;
+  color: #95a5a6;
+}
+
+/* ================= BI-DIRECTIONAL ANIMATIONS ================= */
+.animate-footer-reveal {
+  opacity: 0;
+  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform, opacity;
+}
+
+/* Initial States */
+.from-left { transform: translateX(-60px); }
+.from-right { transform: translateX(60px); }
+.from-bottom { transform: translateY(50px); }
+
+/* Show State (Scroll Down AND Scroll Up) */
+.animate-footer-reveal.active-footer {
+  opacity: 1;
+  transform: translate(0, 0) !important;
+}
+
+/* Delays */
+.delay-short { transition-delay: 0.15s; }
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .footer-container { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  #mainFooter { padding: 60px 0 20px 0; }
+  .footer-container { grid-template-columns: 1fr; text-align: center; }
+  /* Convert side slides to bottom slides for better mobile experience */
+  .from-left, .from-right { transform: translateY(40px); }
+  .brand-area, .contact-area { align-items: center; }
+  .contact-link, .social-icons { justify-content: center; }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const footerElements = document.querySelectorAll('.animate-footer-reveal');
+
+  const observerOptions = {
+    threshold: 0.1, // Trigger when 10% of the element is visible
+    rootMargin: "0px 0px -50px 0px" // Trigger slightly before it hits the bottom
+  };
+
+  const footerObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Enters viewport (either from top or bottom)
+        entry.target.classList.add('active-footer');
+      } else {
+        // Exits viewport - Resets the animation so it can fire again
+        entry.target.classList.remove('active-footer');
+      }
+    });
+  }, observerOptions);
+
+  footerElements.forEach(el => footerObserver.observe(el));
+});
+</script>
+
+
+<style>
+  /* ================= NEWS UPDATE SECTION ================= */
+  .news-update-section {
+    width: 100%;
+    /* CRITICAL FIX: Ensures padding doesn't add to the width */
+    box-sizing: border-box; 
+    padding: 80px 5%;
+    background: #f7f7f7;
+    text-align: center;
+    /* Clips any elements currently animating from the sides */
+    overflow-x: hidden; 
+    position: relative;
+  }
+
+  .news-header {
+    font-family: 'Lora', serif;
+    /* Responsive font size for smaller screens */
+    font-size: clamp(1.8rem, 5vw, 2.5rem); 
+    color: #0b2545;
+    margin-bottom: 10px;
+  }
+
+  .news-description {
+    font-family: 'Lora', serif;
+    font-size: 1.1rem;
+    color: #1f2d3d;
+    margin-bottom: 40px;
+    max-width: 850px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .news-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .news-subheader {
+    font-family: 'Lora', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #0b2545;
+    margin-bottom: 10px;
+  }
+
+  .news-image {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .news-text {
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    color: #1f2d3d;
+    line-height: 1.6;
+    max-width: 100%;
+  }
+
+  .news-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background: #f7941d;
+    color: #fff;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+  }
+
+  .news-btn:hover { background: #e58315; }
+
+  /* ================= ANIMATIONS ================= */
+  .animate-news-right,
+  .animate-news-left,
+  .animate-news-bottom,
+  .animate-news-fadeup {
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* Prevents layout shifts during animation */
+    will-change: transform, opacity; 
+  }
+
+  /* Reduced offset to 30px to ensure it doesn't break mobile viewports */
+  .animate-news-right { transform: translateX(30px); } 
+  .animate-news-left { transform: translateX(-30px); } 
+  .animate-news-bottom { transform: translateY(30px); } 
+  .animate-news-fadeup { transform: translateY(20px); }
+
+  .show-news { 
+    opacity: 1; 
+    transform: translateX(0) translateY(0); 
+  }
+
+  /* Global fix to ensure the whole page respects the width */
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+</style>
+
+<script>
+  const newsElements = document.querySelectorAll('.animate-news-right, .animate-news-left, .animate-news-bottom, .animate-news-fadeup');
+
+  const newsObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('show-news');
+      } else {
+        entry.target.classList.remove('show-news');
+      }
+    });
+  }, { 
+    threshold: 0.1,
+    /* RootMargin helps trigger the animation slightly before it enters view */
+    rootMargin: '0px 0px -50px 0px' 
+  });
+
+  newsElements.forEach(el => newsObserver.observe(el));
+</script>
+
+<script>
+  window.addEventListener('scroll', function() {
+    const header = document.getElementById('mainHeader');
+    header.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  function toggleNav() { document.getElementById('navDrawer').classList.toggle('active'); }
+
+  let familiesAnimated = false, studentsAnimated = false, teamAnimated = false;
+  function countUp(el, end, duration=600){
+    let start=0, range=end, increment=range/(duration/15);
+    let counter = setInterval(()=>{
+      start+=increment;
+      if(start>=range){ start=range; clearInterval(counter); }
+      el.innerText=Math.floor(start)+'+';
+    },15);
+  }
+  function typeText(el, text){
+    el.innerText=''; let i=0;
+    let interval = setInterval(()=>{
+      el.innerText+=text.charAt(i); i++;
+      if(i>=text.length) clearInterval(interval);
+    }, 100);
+  }
+
+  const scrollElements = document.querySelectorAll(
+  '.scroll-animate, .service-card, .animate-on-scroll, .animate-join, .animate-academy'
+);
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('show');
+        if(entry.target.id==='stat-families' && !familiesAnimated) { countUp(document.getElementById('families'), 10); familiesAnimated = true; }
+        if(entry.target.id==='stat-students' && !studentsAnimated) { countUp(document.getElementById('students'), 3); studentsAnimated = true; }
+        if(entry.target.id==='stat-team' && !teamAnimated) { typeText(document.getElementById('typing'),'Expert Team'); teamAnimated = true; }
+      } else {
+        if(!entry.target.classList.contains('service-card')) entry.target.classList.remove('show');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  scrollElements.forEach(el=>observer.observe(el));
+
+  // Review Slider Logic
+  const slider = document.querySelector('.reviews-slider');
+  const slides = document.querySelectorAll('.review-card');
+  let index = 0;
+  const showSlide = i => { slider.style.transform = `translateX(-${i * 100}%)`; };
+  const nextSlide = () => { index = (index + 1) % slides.length; showSlide(index); };
+  const prevSlide = () => { index = (index - 1 + slides.length) % slides.length; showSlide(index); };
+  let autoSlide = setInterval(nextSlide, 5000);
+  document.querySelector('.slider-arrow.next').addEventListener('click', () => {
+    nextSlide(); clearInterval(autoSlide); autoSlide = setInterval(nextSlide, 5000);
+  });
+  document.querySelector('.slider-arrow.prev').addEventListener('click', () => {
+    prevSlide(); clearInterval(autoSlide); autoSlide = setInterval(nextSlide, 5000);
+  });
+</script>
+
+</body>
+</html>

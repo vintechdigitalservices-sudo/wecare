@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic Meta -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Live-In Care: Quality Support for Your Elderly Loved Ones | WeCare Nursing Services</title>
+
+  <!-- SEO -->
+  <meta name="description" content="WeCare Nursing Services Live-In Care program helps busy professionals provide quality, dignified care for elderly loved ones without disrupting work or family life.">
+  <meta name="keywords" content="Live-in care Nigeria, elderly care services, home care nurses, WeCare Nursing Services, caregiver services">
+  <meta name="author" content="WeCare Nursing Services">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Live-In Care: Quality Support for Your Elderly Loved Ones">
+  <meta property="og:description" content="A professional live-in caregiving solution designed for families who want peace of mind without compromising their careers.">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="images/live-in-care.jpg">
+  <meta property="og:site_name" content="WeCare Nursing Services">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Live-In Care: Quality Support for Your Elderly Loved Ones">
+  <meta name="twitter:description" content="Professional live-in caregiving that allows elderly loved ones to age comfortably at home.">
+  <meta name="twitter:image" content="images/live-in-care.jpg">
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" href="images/Logo.png" type="image/png">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Lora', serif;
+      background: #f9f9f9;
+      color: #333;
+      line-height: 1.7;
+    }
+
+    .article-container {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      margin-bottom: 25px;
+      color: #0B1F3B;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    .hero-image {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 35px;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    p {
+      margin-bottom: 22px;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    .cta {
+      margin-top: 40px;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    .cta a {
+      display: inline-block;
+      background: #FF7A00;
+      color: #fff;
+      text-decoration: none;
+      padding: 16px 28px;
+      font-weight: 700;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+
+    .cta a:hover {
+      background: #e66a00;
+    }
+
+    .animate {
+      animation: slideUp 0.9s ease forwards;
+    }
+
+    @keyframes slideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <article class="article-container">
+
+    <!-- Headline -->
+    <h1 class="observe">Live-In Care: Quality Support for Your Elderly Loved Ones</h1>
+
+    <!-- Hero Image -->
+    <img src="live-in-care.jpg" alt="Live-in caregiver supporting an elderly client at home" class="hero-image observe">
+
+    <!-- Article Content -->
+    <p class="observe">
+      Imagine being a busy professional with a demanding job, yet your heart is always with your elderly parents. You worry constantly: Are they eating properly? Are they safe at home? Are they getting the attention and care they deserve? For many families, the challenge of providing consistent care without sacrificing careers or personal responsibilities is overwhelming.
+    </p>
+
+    <p class="observe">
+      WeCare Nursing Services recognized this growing challenge and designed a solution tailored for modern families — our Live-In Care program. Instead of forcing elderly loved ones to relocate or placing added strain on family members, our trained caregivers move directly into the client’s home, becoming part of the daily routine.
+    </p>
+
+    <p class="observe">
+      This approach allows elderly individuals to age comfortably in familiar surroundings while families maintain their work-life balance. There is no disruption, no loss of independence, and no emotional displacement — just consistent, professional care delivered where it matters most.
+    </p>
+
+    <p class="observe">
+      Our caregivers go beyond basic supervision. They provide medication management, daily health monitoring, companionship, and emotional support. Through trust and consistency, they build meaningful relationships that promote safety, dignity, and emotional well-being.
+    </p>
+
+    <p class="observe">
+      Every aspect of the Live-In Care program is guided by professionalism, empathy, and accountability. Families gain peace of mind knowing their loved ones are in capable hands, while elderly clients receive care that respects their dignity, independence, and comfort.
+    </p>
+
+    <!-- CTA -->
+    <div class="cta observe">
+      <a href="packages.html">Explore Packages</a>
+    </div>
+
+  </article>
+
+  <!-- Scroll Animation JS -->
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+        } else {
+          entry.target.classList.remove('animate');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.observe').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

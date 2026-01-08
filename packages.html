@@ -113,7 +113,7 @@
     .package-card .price {
       font-size: 2rem;
       font-weight: 800;
-      margin-bottom: 32px;
+      margin-bottom: 4px;
       color: var(--navy-blue);
       display: flex;
       align-items: baseline;
@@ -124,6 +124,16 @@
       color: var(--text-gray);
       font-weight: 400;
       margin-left: 4px;
+    }
+
+    .negotiable-tag {
+      font-size: 0.8rem;
+      color: var(--green-primary);
+      font-weight: 600;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
 
     /* List styling */
@@ -181,6 +191,29 @@
       box-shadow: 0 6px 20px rgba(249, 115, 22, 0.3);
     }
 
+    .back-home-container {
+      text-align: center;
+      margin-bottom: 40px;
+      grid-column: 1 / -1;
+    }
+
+    .back-btn {
+      display: inline-block;
+      padding: 12px 68px;
+      background: var(--orange-accent);
+      color: var(--white);
+      font-weight: 700;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 14px rgba(249, 115, 22, 0.2);
+    }
+
+    .back-btn:hover {
+      background: #ea580c;
+      transform: scale(1.05);
+    }
+
     /* Mobile view */
     @media (max-width: 640px) {
       .header-section { padding: 60px 20px 40px; }
@@ -199,9 +232,12 @@
 
   <main class="packages-wrapper">
 
+
+
     <article class="package-card">
       <h2>Basic Care</h2>
       <div class="price">₦50,000 <span>/ Month</span></div>
+      <div class="negotiable-tag">ⓘ Price is negotiable</div>
       <ul>
         <li>Three (3) days home nursing visit, Morning visits only</li>
         <li>Vital check-up</li>
@@ -211,13 +247,12 @@
       <a class="cta-btn" href="https://wa.me/2349073190330?text=Hello%2C%20I%20got%20your%20information%20from%20your%20website%20on%20Google.%20I%20would%20like%20to%20hire%20the%20Basic%20Care%20package." target="_blank">Hire Package</a>
     </article>
 
-    <article class="package-card popular">
-      <div class="popular-badge">Most Popular</div>
+    <article class="package-card">
       <h2>Advanced Care</h2>
       <div class="price">₦85,000 <span>/ Month</span></div>
-      <div class="stars">★★★★★</div>
+      <div class="negotiable-tag">ⓘ Price is negotiable</div>
       <ul>
-        <li>Six (6) days home nursing visit, 12 Hourly</li>
+        <li>Five (5) days home nursing visit, 12 Hourly</li>
         <li>Vital Check-up</li>
         <li>Drug Administration</li>
         <li>Wound Dressing</li>
@@ -227,9 +262,12 @@
       <a class="cta-btn" href="https://wa.me/2349073190330?text=Hello%2C%20I%20got%20your%20information%20from%20your%20website%20on%20Google.%20I%20would%20like%20to%20hire%20the%20Advanced%20Care%20package." target="_blank">Hire Package</a>
     </article>
 
-    <article class="package-card">
+    <article class="package-card popular">
+      <div class="popular-badge">Most Popular</div>
       <h2>Silver Care Plus</h2>
-      <div class="price">₦150,000 <span>/ Month</span></div>
+      <div class="price">₦165,000 <span>/ Month</span></div>
+      <div class="negotiable-tag">ⓘ Price is negotiable</div>
+      <div class="stars">★★★★★</div>
       <ul>
         <li>Regular vital check-up</li>
         <li>Drug administration</li>
@@ -245,7 +283,8 @@
 
     <article class="package-card">
       <h2>Senior Citizen Care</h2>
-      <div class="price">₦250,000 <span>/ Month</span></div>
+      <div class="price">₦200,000 <span>/ Month</span></div>
+      <div class="negotiable-tag">ⓘ Price is negotiable</div>
       <ul>
         <li>Regular vital check-up</li>
         <li>Drug administration</li>
@@ -262,6 +301,9 @@
       </ul>
       <a class="cta-btn" href="https://wa.me/2349073190330?text=Hello%2C%20I%20got%20your%20information%20from%20your%20website%20on%20Google.%20I%20would%20like%20to%20hire%20the%20Senior%20Citizen%20Care%20package." target="_blank">Hire Package</a>
     </article>
+        <div class="back-home-container">
+        <a href="index.html" class="back-btn">Back to Homepage</a>
+    </div>
 
   </main>
 

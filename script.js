@@ -132,3 +132,24 @@ document.querySelector('.slider-arrow.next').addEventListener('click', () => {
 document.querySelector('.slider-arrow.prev').addEventListener('click', () => {
   prevSlide(); clearInterval(autoSlide); autoSlide = setInterval(nextSlide, 5000);
 });
+document.addEventListener('DOMContentLoaded', () => {
+    const heroContent = document.querySelector('.cpr-content');
+    const heroImage = document.querySelector('.cpr-image');
+
+    // Simple Fade In Effect
+    heroContent.style.opacity = '0';
+    heroContent.style.transform = 'translateX(-20px)';
+    heroImage.style.opacity = '0';
+    heroImage.style.transform = 'translateX(20px)';
+
+    setTimeout(() => {
+        heroContent.style.transition = 'all 0.8s ease-out';
+        heroContent.style.opacity = '1';
+        heroContent.style.transform = 'translateX(0)';
+        
+        heroImage.style.transition = 'all 0.8s ease-out';
+        heroImage.style.opacity = '1';
+        heroImage.style.transform = 'translateX(0)';
+    }, 200);
+});
+  

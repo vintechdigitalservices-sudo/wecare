@@ -1,4 +1,4 @@
-:root {
+I'm:root {
   --green: #1e7f4f;
   --orange: #f7941d;
   --navy: #0b2545;
@@ -804,3 +804,158 @@ p {
     .cpr-features { justify-content: center; flex-direction: column; gap: 5px; }
 }
 
+/* ================== CPR SECTION STYLES ================== */
+.cpr-hero {
+  background: linear-gradient(135deg, #0b2545 0%, #1a3a5f 100%);
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.cpr-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"><path fill="white" d="M20,30 Q30,20 40,30 T60,30 T80,30 M20,50 Q30,40 40,50 T60,50 T80,50 M20,70 Q30,60 40,70 T60,70 T80,70" stroke="white" stroke-width="1" fill="none"/><circle cx="50" cy="20" r="3" fill="white"/><circle cx="30" cy="40" r="2" fill="white"/><circle cx="70" cy="40" r="2" fill="white"/><circle cx="50" cy="80" r="3" fill="white"/></svg>') repeat;
+  pointer-events: none;
+}
+
+.cpr-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 2;
+}
+
+.cpr-content {
+  flex: 1;
+  min-width: 280px;
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(247, 148, 29, 0.15);
+  color: #f7941d;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(247, 148, 29, 0.3);
+}
+
+.cpr-content h1 {
+  font-family: 'Lora', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+}
+
+.cpr-content p {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 2rem;
+}
+
+.cpr-content p a {
+  color: #f7941d;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: all 0.3s ease;
+}
+
+.cpr-content p a:hover {
+  color: #ffb347;
+  text-decoration-thickness: 2px;
+}
+
+.cpr-image {
+  flex: 1;
+  min-width: 280px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cpr-image:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.4);
+}
+
+.cpr-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.cpr-image:hover img {
+  transform: scale(1.03);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .cpr-hero {
+    padding: 3rem 1.5rem;
+  }
+  
+  .cpr-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+  
+  .cpr-content h1 {
+    font-size: 1.8rem;
+  }
+  
+  .cpr-content p {
+    font-size: 1rem;
+  }
+  
+  .badge {
+    font-size: 0.7rem;
+  }
+  
+  .cpr-image {
+    max-width: 450px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .cpr-hero {
+    padding: 2rem 1rem;
+  }
+  
+  .cpr-content h1 {
+    font-size: 1.5rem;
+  }
+  
+  .cpr-content p {
+    font-size: 0.9rem;
+  }
+  
+  .badge {
+    font-size: 0.65rem;
+    padding: 0.3rem 0.8rem;
+  }
+}

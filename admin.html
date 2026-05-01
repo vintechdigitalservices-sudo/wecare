@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Unified Admin | WeCare</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #eef5f0;
+      font-family: 'Inter', sans-serif;
+      color: #1e2a3a;
+      padding: 24px 20px;
+    }
+
+    .dashboard-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .admin-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      background: white;
+      padding: 12px 24px;
+      border-radius: 28px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03), 0 1px 2px rgba(0,0,0,0.05);
+    }
+    .logo-area h2 {
+      color: #1e7b34;
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: -0.3px;
+    }
+    .logo-area h2 i {
+      margin-right: 10px;
+    }
+    .logo-area p {
+      font-size: 0.75rem;
+      color: #5b6e8c;
+    }
+    .tab-bar {
+      display: flex;
+      gap: 12px;
+      background: #f1f5f3;
+      padding: 6px;
+      border-radius: 48px;
+    }
+    .tab-btn {
+      background: transparent;
+      border: none;
+      padding: 10px 28px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: 0.2s;
+      color: #2c3e4e;
+      font-family: 'Inter', sans-serif;
+    }
+    .tab-btn i {
+      margin-right: 8px;
+    }
+    .tab-btn.active {
+      background: #28a745;
+      color: white;
+      box-shadow: 0 2px 8px rgba(40,167,69,0.3);
+    }
+    .logout-header-btn {
+      background: #fff0f0;
+      border: none;
+      padding: 10px 22px;
+      border-radius: 40px;
+      font-weight: 600;
+      color: #b91c1c;
+      cursor: pointer;
+      transition: 0.2s;
+      font-size: 0.85rem;
+    }
+    .logout-header-btn i {
+      margin-right: 8px;
+    }
+    .logout-header-btn:hover {
+      background: #fcd9d9;
+    }
+
+    .panel {
+      display: none;
+      animation: fade 0.25s ease;
+    }
+    .panel.active-panel {
+      display: block;
+    }
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(6px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+
+    .cert-card {
+      background: white;
+      border-radius: 28px;
+      padding: 24px;
+      margin-bottom: 28px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.05);
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .input-field {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 16px;
+      border: 1px solid #cfdfd7;
+      font-size: 0.9rem;
+      transition: 0.2s;
+    }
+    .input-field:focus {
+      outline: none;
+      border-color: #28a745;
+      box-shadow: 0 0 0 3px rgba(40,167,69,0.2);
+    }
+    .btn-primary {
+      background: #28a745;
+      border: none;
+      padding: 12px 26px;
+      border-radius: 40px;
+      font-weight: 700;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s;
+      font-size: 0.9rem;
+    }
+    .btn-primary i {
+      margin-right: 8px;
+    }
+    .btn-secondary {
+      background: #e9ecef;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 40px;
+      font-weight: 600;
+      color: #2c3e4e;
+      cursor: pointer;
+    }
+    .btn-secondary i {
+      margin-right: 8px;
+    }
+    .btn-danger {
+      background: #dc3545;
+      color: white;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .btn-danger i {
+      margin-right: 5px;
+    }
+    .btn-warning {
+      background: #ffc107;
+      color: #1e2a3a;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .btn-warning i {
+      margin-right: 5px;
+    }
+    .search-bar {
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: flex-end;
+    }
+    .search-bar input {
+      width: 280px;
+      padding: 12px 18px;
+      border-radius: 40px;
+      border: 1px solid #ccc;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 14px 12px;
+      text-align: left;
+      border-bottom: 1px solid #e2e8f0;
+      vertical-align: middle;
+    }
+    th {
+      background: #1e7b34;
+      color: white;
+      font-weight: 600;
+    }
+    .passport-preview {
+      width: 60px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 10px;
+      background: #f1f5f9;
+    }
+    .status-Verified {
+      color: #2b7e3a;
+      font-weight: 700;
+    }
+    .status-NotVerified {
+      color: #c72a2a;
+    }
+    .feedback-actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 20px;
+    }
+    .export-pdf-btn {
+      background: #0b2545;
+      padding: 12px 28px;
+      border-radius: 40px;
+    }
+    .modal {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(6px);
+      z-index: 2000;
+      transition: all 0.2s;
+    }
+    .modal.hidden {
+      display: none;
+    }
+    .modal-container {
+      background: white;
+      max-width: 420px;
+      width: 90%;
+      padding: 36px 28px;
+      border-radius: 44px;
+      text-align: center;
+      box-shadow: 0 30px 40px rgba(0,0,0,0.2);
+    }
+    .modal-container h3 {
+      color: #28a745;
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+    .modal-container h3 i {
+      margin-right: 10px;
+    }
+    .modal-input {
+      width: 100%;
+      margin-bottom: 16px;
+      padding: 14px 16px;
+      border-radius: 60px;
+      border: 1px solid #ddd;
+    }
+    .error-msg {
+      color: #dc3545;
+      margin: 12px 0;
+      font-size: 0.85rem;
+    }
+    footer {
+      text-align: center;
+      margin-top: 32px;
+      font-size: 0.75rem;
+      color: #6c7a8e;
+    }
+    
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+    .pagination button {
+      background: white;
+      border: 1px solid #ccc;
+      padding: 8px 16px;
+      border-radius: 40px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+    .pagination button:hover:not(:disabled) {
+      background: #28a745;
+      color: white;
+      border-color: #28a745;
+    }
+    .pagination button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    .pagination span {
+      font-weight: 600;
+    }
+    
+    /* BRANDED REPLY MODAL */
+    .reply-modal-overlay {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(11, 37, 69, 0.85); /* Navy background overlay */
+      backdrop-filter: blur(8px);
+      z-index: 2001;
+    }
+    .reply-modal-overlay.hidden {
+      display: none;
+    }
+    .reply-modal-container {
+      background: #ffffff; /* White background */
+      border-radius: 32px;
+      max-width: 700px;
+      width: 95%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 2rem;
+      border: 4px solid #0b2545; /* Navy border */
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+    .reply-modal-container h3 {
+      font-family: 'Inter', sans-serif;
+      color: #0b2545; /* Navy text */
+      margin-bottom: 20px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+    }
+    .reply-modal-container h3 i {
+      margin-right: 12px;
+      color: #f07d1a; /* Orange Icon */
+    }
+    .reply-modal-container textarea {
+      width: 100%;
+      padding: 14px;
+      border-radius: 16px;
+      border: 2px solid #e2e8f0;
+      background: #f8fafc;
+      color: #1e2a3a;
+      font-family: 'Inter', sans-serif;
+      margin: 12px 0;
+      resize: vertical;
+      transition: 0.2s;
+    }
+    .reply-modal-container textarea:focus {
+      outline: none;
+      border-color: #f07d1a; /* Orange Focus */
+      box-shadow: 0 0 0 4px rgba(240, 125, 26, 0.1);
+    }
+    .reply-modal-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: flex-end;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+    .delivery-method {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding: 8px;
+      background: #f1f5f9;
+      border-radius: 20px;
+    }
+    .method-btn {
+      flex: 1;
+      padding: 0.85rem;
+      border: 2px solid transparent;
+      background: white;
+      color: #64748b;
+      border-radius: 14px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    .method-btn.active {
+      border-color: #0b2545;
+      background: #0b2545;
+      color: #ffffff;
+    }
+    .method-btn.email.active { border-color: #0b2545; background: #0b2545; color: white; }
+    .method-btn.whatsapp.active { border-color: #28a745; background: #28a745; color: white; }
+    
+    .whatsapp-number-box {
+      background: rgba(40, 167, 69, 0.1); /* Touch of Green */
+      border: 2px dashed #28a745;
+      border-radius: 16px;
+      padding: 1.2rem;
+      margin: 1rem 0;
+      text-align: center;
+    }
+    .whatsapp-number-box p {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #28a745;
+      margin-top: 0.5rem;
+    }
+    .recipient-info {
+      background: #0b2545; /* Navy Background */
+      border-radius: 16px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      color: #ffffff; /* White text */
+      border-left: 5px solid #f07d1a; /* Orange Accent */
+    }
+
+    #sendReplyEmailBtn { background: #f07d1a; color: white; } /* Orange Action Button */
+    #sendReplyWhatsAppBtn { background: #28a745; color: white; } /* Green for WhatsApp */
+    #closeReplyModalBtn { background: #e2e8f0; color: #475569; }
+    
+    /* MOBILE FIXES: Prevent "squeezy" narrow feedback rows */
+    @media (max-width: 760px) {
+      body { padding: 16px; }
+      .admin-header { flex-direction: column; gap: 12px; align-items: stretch; }
+      .tab-bar { justify-content: center; }
+      
+      .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        background: white;
+        border-radius: 20px;
+        margin-bottom: 10px;
+      }
+
+      table {
+        min-width: 850px;
+      }
+
+      th, td { 
+        font-size: 0.85rem; 
+        padding: 12px 10px; 
+        white-space: nowrap;
+      }
+
+      td:nth-child(5) { 
+        min-width: 250px;
+        max-width: 400px; 
+        white-space: normal; 
+        line-height: 1.4;
+      }
+
+      .action-buttons { 
+        display: flex; 
+        flex-direction: row; 
+        gap: 6px; 
+      }
+      .action-buttons button { 
+        padding: 8px 12px; 
+        font-size: 0.75rem; 
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div id="loginModal" class="modal">
+  <div class="modal-container">
+    <h3><i class="fas fa-lock"></i> Admin Access</h3>
+    <input type="email" id="modalEmail" class="modal-input" placeholder="Admin email address" autocomplete="off">
+    <input type="password" id="modalPassword" class="modal-input" placeholder="Password">
+    <div id="modalError" class="error-msg"></div>
+    <button id="modalLoginBtn" class="btn-primary" style="width:100%;"><i class="fas fa-sign-in-alt"></i> Login to Dashboard</button>
+  </div>
+</div>
+
+<div id="replyModal" class="reply-modal-overlay hidden">
+  <div class="reply-modal-container">
+    <h3><i class="fas fa-reply-all"></i> Reply to Client</h3>
+    
+    <div class="delivery-method">
+      <button class="method-btn email active" id="replyMethodEmailBtn">
+        <i class="fas fa-envelope"></i> Send via Email
+      </button>
+      <button class="method-btn whatsapp" id="replyMethodWhatsAppBtn">
+        <i class="fab fa-whatsapp"></i> Send via WhatsApp
+      </button>
+    </div>
+    
+    <div id="replyModalBody">
+      <div class="recipient-info" id="replyRecipientInfo"></div>
+      
+      <div class="form-group" id="replySubjectField">
+        <label style="display: block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #64748b; margin-bottom: 0.5rem; margin-left: 5px;">Email Subject</label>
+        <input type="text" id="replySubject" style="width: 100%; padding: 0.85rem 1rem; border-radius: 12px; border: 2px solid #e2e8f0; background: #f8fafc; color: #1e2a3a;" placeholder="Response to your feedback">
+      </div>
+      
+      <div class="form-group" style="margin-top: 15px;">
+        <label style="display: block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #64748b; margin-bottom: 0.5rem; margin-left: 5px;">Your Response Message</label>
+        <textarea id="replyMessageBody" rows="6"></textarea>
+      </div>
+      
+      <div class="whatsapp-number-box" id="replyWhatsappNumberBox" style="display: none;">
+        <i class="fab fa-whatsapp" style="font-size: 1.8rem; color: #28a745;"></i>
+        <p id="replyWhatsappNumberDisplay"></p>
+        <small style="color: #64748b; font-weight: 500;">We'll open WhatsApp with your message pre-filled</small>
+      </div>
+    </div>
+    
+    <div class="reply-modal-buttons">
+      <button id="closeReplyModalBtn" class="btn-secondary"><i class="fas fa-times"></i> Close</button>
+      <button id="sendReplyEmailBtn" class="btn-primary"><i class="fas fa-paper-plane"></i> Send Email Now</button>
+      <button id="sendReplyWhatsAppBtn" class="btn-primary" style="display: none;"><i class="fab fa-whatsapp"></i> Open WhatsApp</button>
+    </div>
+  </div>
+</div>
+
+<div id="dashboardMain" style="display: none;">
+  <div class="dashboard-wrapper">
+    <div class="admin-header">
+      <div class="logo-area">
+        <h2><i class="fas fa-shield-alt"></i> WeCare Admin Suite</h2>
+        <p>Certificate & Feedback Hub</p>
+      </div>
+      <div class="tab-bar">
+        <button class="tab-btn active" data-tab="cert"><i class="fas fa-certificate"></i> Certificates</button>
+        <button class="tab-btn" data-tab="feedback"><i class="fas fa-comment-dots"></i> Client Feedback</button>
+      </div>
+      <button id="dashboardLogoutBtn" class="logout-header-btn"><i class="fas fa-sign-out-alt"></i> Logout </button>
+    </div>
+
+    <div id="certPanel" class="panel active-panel">
+      <div class="cert-card">
+        <h3 style="margin-bottom: 10px;"><i class="fas fa-user-graduate"></i> Add / Edit Student Record</h3>
+        <div class="form-grid">
+          <input type="text" id="firstName" class="input-field" placeholder="First name *">
+          <input type="text" id="lastName" class="input-field" placeholder="Last name *">
+          <input type="text" id="otherName" class="input-field" placeholder="Other name">
+          <input type="text" id="course" class="input-field" placeholder="Course *">
+          <input type="text" id="field" class="input-field" placeholder="Field / Department">
+          <input type="text" id="certId" class="input-field" placeholder="Course Code (unique) *">
+          <select id="status" class="input-field">
+            <option value="Verified">Verified</option>
+            <option value="Not Verified">Not Verified</option>
+          </select>
+          <input type="text" id="gradDate" class="input-field" placeholder="Graduation YYYY-MM-DD *">
+          <input type="text" id="issueDate" class="input-field" placeholder="Issue date YYYY-MM-DD">
+        </div>
+        <div style="display: flex; gap: 12px; margin-top: 8px;">
+          <button id="submitStudentBtn" class="btn-primary"><i class="fas fa-save"></i> Save Student</button>
+          <button id="resetFormBtn" class="btn-secondary"><i class="fas fa-undo-alt"></i> Reset</button>
+        </div>
+      </div>
+
+      <div class="search-bar">
+        <input type="text" id="certSearch" placeholder="🔍 Search by name / code" />
+      </div>
+      <div class="table-responsive">
+        <table id="studentsTable">
+          <thead><tr><th>Photo</th><th>Full Name</th><th>Course / Field</th><th>Code</th><th>Status</th><th>Grad Date</th><th>Issue Date</th><th>Actions</th></tr></thead>
+          <tbody id="studentsTbody"><tr><td colspan="8">Loading students...</td></tr></tbody>
+        </table>
+      </div>
+      <div id="certPagination" class="pagination"></div>
+    </div>
+
+    <div id="feedbackPanel" class="panel">
+      <div class="feedback-actions">
+        <button id="exportFeedbackPdf" class="btn-primary export-pdf-btn"><i class="fas fa-file-pdf"></i> Export as PDF</button>
+      </div>
+      <div class="table-responsive">
+        <table id="feedbackTable">
+          <thead><tr><th>#</th><th>Full Name</th><th>Email</th><th>Phone</th><th>Message</th><th>Date</th><th>Actions</th></tr></thead>
+          <tbody id="feedbackTbody"><tr><td colspan="7">Loading feedback...</td></tr></tbody>
+        </table>
+      </div>
+      <div id="feedbackPagination" class="pagination"></div>
+    </div>
+    <footer><i class="far fa-copyright"></i> 2025 WeCare Nursing Services — Secure Admin Portal</footer>
+  </div>
+</div>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+  import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
+  import { getFirestore, collection, doc, getDocs, setDoc, deleteDoc, getDoc, query, orderBy } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBIM_jh15J2riP1XXtxP4hCmlbx1BqK5-8",
+    authDomain: "wecare--verification.firebaseapp.com",
+    projectId: "wecare--verification",
+    storageBucket: "wecare--verification.appspot.com",
+    messagingSenderId: "198997154830",
+    appId: "1:198997154830:web:a732dc7abc306ed1a5f05f"
+  };
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  const loginModal = document.getElementById('loginModal');
+  const dashboardMain = document.getElementById('dashboardMain');
+  const modalEmail = document.getElementById('modalEmail');
+  const modalPassword = document.getElementById('modalPassword');
+  const modalLoginBtn = document.getElementById('modalLoginBtn');
+  const modalError = document.getElementById('modalError');
+  const dashboardLogoutBtn = document.getElementById('dashboardLogoutBtn');
+  
+  const firstNameEl = document.getElementById('firstName');
+  const lastNameEl = document.getElementById('lastName');
+  const otherNameEl = document.getElementById('otherName');
+  const courseEl = document.getElementById('course');
+  const fieldEl = document.getElementById('field');
+  const certIdEl = document.getElementById('certId');
+  const statusEl = document.getElementById('status');
+  const gradDateEl = document.getElementById('gradDate');
+  const issueDateEl = document.getElementById('issueDate');
+  const submitStudentBtn = document.getElementById('submitStudentBtn');
+  const resetFormBtn = document.getElementById('resetFormBtn');
+  const studentsTbody = document.getElementById('studentsTbody');
+  const certSearch = document.getElementById('certSearch');
+  
+  const feedbackTbody = document.getElementById('feedbackTbody');
+  const exportFeedbackPdf = document.getElementById('exportFeedbackPdf');
+  
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const certPanel = document.getElementById('certPanel');
+  const feedbackPanel = document.getElementById('feedbackPanel');
+  
+  let editingCertId = null;
+  let allStudents = [];
+  let currentCertPage = 1;
+  const certItemsPerPage = 20;
+  
+  let allFeedbacks = [];
+  let currentFeedbackPage = 1;
+  const feedbackItemsPerPage = 20;
+  
+  let currentReplyData = null;
+  let currentReplyMethod = "email";
+  
+  const ADMIN_ALLOWED_EMAIL = "academy@wecarenigeria.com";
+  
+  function showLoginModal() {
+    loginModal.classList.remove('hidden');
+    dashboardMain.style.display = 'none';
+    modalError.innerText = '';
+    modalEmail.value = '';
+    modalPassword.value = '';
+  }
+  
+  function hideLoginModalAndLoad() {
+    loginModal.classList.add('hidden');
+    dashboardMain.style.display = 'block';
+    loadAllStudents();
+    loadAllFeedbacks();
+  }
+  
+  async function handleLogout() {
+    await signOut(auth);
+    window.location.href = "index.html";
+  }
+  
+  dashboardLogoutBtn.addEventListener('click', handleLogout);
+  
+  modalLoginBtn.addEventListener('click', async () => {
+    const email = modalEmail.value.trim();
+    const pwd = modalPassword.value.trim();
+    if (!email || !pwd) {
+      modalError.innerText = "Please enter email and password.";
+      return;
+    }
+    try {
+      const userCred = await signInWithEmailAndPassword(auth, email, pwd);
+      if (userCred.user.email !== ADMIN_ALLOWED_EMAIL) {
+        await signOut(auth);
+        modalError.innerText = "Unauthorized email. Only academy@wecarenigeria.com can access.";
+        return;
+      }
+      hideLoginModalAndLoad();
+    } catch (err) {
+      console.error(err);
+      modalError.innerText = "Invalid credentials or network error.";
+    }
+  });
+  
+  onAuthStateChanged(auth, (user) => {
+    if (user && user.email === ADMIN_ALLOWED_EMAIL) {
+      hideLoginModalAndLoad();
+    } else {
+      showLoginModal();
+      if (user && user.email !== ADMIN_ALLOWED_EMAIL) {
+        signOut(auth);
+      }
+    }
+  });
+  
+  function formatPhoneForWhatsApp(phone) {
+    if (!phone) return '';
+    let cleaned = phone.replace(/\D/g, '');
+    if (cleaned.startsWith('0')) {
+      cleaned = '234' + cleaned.substring(1);
+    }
+    return cleaned;
+  }
+  
+  async function loadAllStudents(filter = '') {
+    if (!studentsTbody) return;
+    studentsTbody.innerHTML = '<tr><td colspan="8">Loading records...</td></tr>';
+    try {
+      const snapshot = await getDocs(collection(db, "students"));
+      let studentsArray = [];
+      snapshot.forEach(docSnap => {
+        const data = docSnap.data();
+        studentsArray.push({
+          id: docSnap.id,
+          firstName: data.firstName || '',
+          lastName: data.lastName || '',
+          otherName: data.otherName || '',
+          fullName: data.fullName || `${data.firstName || ''} ${data.otherName || ''} ${data.lastName || ''}`.trim(),
+          course: data.course || '-',
+          field: data.field || '-',
+          certId: data.certId || docSnap.id,
+          status: data.status || 'Not Verified',
+          gradDate: data.gradDate || '-',
+          issueDate: data.issueDate || '-',
+          imageURL: data.imageURL || ''
+        });
+      });
+      if (filter) {
+        const lowerFilter = filter.toLowerCase();
+        studentsArray = studentsArray.filter(s => 
+          s.fullName.toLowerCase().includes(lowerFilter) || 
+          s.certId.toLowerCase().includes(lowerFilter)
+        );
+      }
+      studentsArray.sort((a,b) => a.certId.localeCompare(b.certId));
+      allStudents = studentsArray;
+      renderCertPage(1);
+    } catch (err) { console.error(err); studentsTbody.innerHTML = '<tr><td colspan="8">Error loading data</td></tr>'; }
+  }
+  
+  function renderCertPage(page) {
+    const totalPages = Math.ceil(allStudents.length / certItemsPerPage);
+    if (page < 1) page = 1;
+    if (page > totalPages && totalPages > 0) page = totalPages;
+    currentCertPage = page;
+    const start = (currentCertPage - 1) * certItemsPerPage;
+    const paginated = allStudents.slice(start, start + certItemsPerPage);
+    
+    if (paginated.length === 0) {
+      studentsTbody.innerHTML = '<tr><td colspan="8" style="text-align:center;">No students found</td></tr>';
+    } else {
+      studentsTbody.innerHTML = '';
+      paginated.forEach(s => {
+        const tr = document.createElement('tr');
+        const imgHtml = s.imageURL ? `<img class="passport-preview" src="${escapeHtml(s.imageURL)}" alt="photo">` : `<div style="width:60px;height:70px;background:#eef2f0;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:24px;"><i class="fas fa-user-circle"></i></div>`;
+        const statusClass = s.status === 'Verified' ? 'status-Verified' : 'status-NotVerified';
+        tr.innerHTML = `
+          <td>${imgHtml}</td>
+          <td><strong>${escapeHtml(s.fullName)}</strong></td>
+          <td>${escapeHtml(s.course)}<br><span style="font-size:11px;">${escapeHtml(s.field)}</span></td>
+          <td>${escapeHtml(s.certId)}</td>
+          <td class="${statusClass}">${escapeHtml(s.status)}</td>
+          <td>${escapeHtml(s.gradDate)}</td>
+          <td>${escapeHtml(s.issueDate)}</td>
+          <td class="action-buttons"><button class="btn-warning" data-edit="${s.certId}"><i class="fas fa-edit"></i> Edit</button>
+          <button class="btn-danger" data-del="${s.certId}"><i class="fas fa-trash"></i> Delete</button></td>
+        `;
+        studentsTbody.appendChild(tr);
+      });
+    }
+    renderPagination('cert', currentCertPage, totalPages);
+    document.querySelectorAll('[data-edit]').forEach(btn => {
+      btn.addEventListener('click', (e) => editStudentRecord(btn.getAttribute('data-edit')));
+    });
+    document.querySelectorAll('[data-del]').forEach(btn => {
+      btn.addEventListener('click', async (e) => { if(confirm("Delete?")) { await deleteDoc(doc(db, "students", btn.getAttribute('data-del'))); loadAllStudents(certSearch.value.trim()); } });
+    });
+  }
+  
+  function renderPagination(type, currentPage, totalPages) {
+    const container = type === 'cert' ? document.getElementById('certPagination') : document.getElementById('feedbackPagination');
+    if (!container) return;
+    if (totalPages <= 1) { container.innerHTML = ''; return; }
+    container.innerHTML = `
+      <button ${currentPage === 1 ? 'disabled' : ''} id="${type}PrevBtn"><i class="fas fa-chevron-left"></i> Previous</button>
+      <span>Page ${currentPage} of ${totalPages}</span>
+      <button ${currentPage === totalPages ? 'disabled' : ''} id="${type}NextBtn">Next <i class="fas fa-chevron-right"></i></button>
+    `;
+    const prevBtn = document.getElementById(`${type}PrevBtn`);
+    const nextBtn = document.getElementById(`${type}NextBtn`);
+    if (prevBtn) prevBtn.addEventListener('click', () => { if (currentPage > 1) type === 'cert' ? renderCertPage(currentPage - 1) : renderFeedbackPage(currentPage - 1); });
+    if (nextBtn) nextBtn.addEventListener('click', () => { if (currentPage < totalPages) type === 'cert' ? renderCertPage(currentPage + 1) : renderFeedbackPage(currentPage + 1); });
+  }
+  
+  window.editStudentRecord = async (certId) => {
+    const docRef = doc(db, "students", certId);
+    const snap = await getDoc(docRef);
+    if (!snap.exists()) { alert("Record missing"); return; }
+    const s = snap.data();
+    firstNameEl.value = s.firstName || '';
+    lastNameEl.value = s.lastName || '';
+    otherNameEl.value = s.otherName || '';
+    courseEl.value = s.course || '';
+    fieldEl.value = s.field || '';
+    certIdEl.value = s.certId || certId;
+    certIdEl.disabled = true;
+    statusEl.value = s.status || 'Not Verified';
+    gradDateEl.value = s.gradDate || '';
+    issueDateEl.value = s.issueDate || '';
+    editingCertId = certId;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+  
+  submitStudentBtn.addEventListener('click', async () => {
+    const firstName = firstNameEl.value.trim();
+    const lastName = lastNameEl.value.trim();
+    const course = courseEl.value.trim();
+    const gradDate = gradDateEl.value.trim();
+    let certIdVal = certIdEl.value.trim().toUpperCase();
+    if (!firstName || !lastName || !course || !gradDate || !certIdVal) {
+      alert("Please fill required fields");
+      return;
+    }
+    const studentData = {
+      certId: certIdVal, firstName, lastName, otherName: otherNameEl.value.trim(),
+      fullName: `${firstName} ${otherNameEl.value.trim()} ${lastName}`.trim(),
+      course, field: fieldEl.value.trim(), status: statusEl.value,
+      gradDate, issueDate: issueDateEl.value.trim() || '',
+      createdAt: new Date().toISOString(), imageURL: ''
+    };
+    await setDoc(doc(db, "students", certIdVal), studentData);
+    alert("Saved!");
+    resetForm();
+    loadAllStudents(certSearch.value.trim());
+  });
+  
+  function resetForm() {
+    firstNameEl.value = ''; lastNameEl.value = ''; otherNameEl.value = '';
+    courseEl.value = ''; fieldEl.value = ''; certIdEl.disabled = false;
+    certIdEl.value = ''; statusEl.value = 'Verified'; gradDateEl.value = ''; issueDateEl.value = ''; editingCertId = null;
+  }
+  resetFormBtn.addEventListener('click', resetForm);
+  certSearch.addEventListener('input', (e) => loadAllStudents(e.target.value.trim()));
+  
+  async function loadAllFeedbacks() {
+    if (!feedbackTbody) return;
+    feedbackTbody.innerHTML = '<tr><td colspan="7">Loading messages...</td><tr>';
+    try {
+      const q = query(collection(db, "contact-message"), orderBy("createdAt", "desc"));
+      const snapshot = await getDocs(q);
+      let feedbacksArray = [];
+      snapshot.forEach(docSnap => {
+        const d = docSnap.data();
+        feedbacksArray.push({
+          id: docSnap.id,
+          fullName: d.fullName || '-',
+          email: d.email || '-',
+          phone: d.phone || '-',
+          message: d.message || '-',
+          date: d.createdAt ? d.createdAt.toDate() : new Date(),
+          dateStr: d.createdAt ? d.createdAt.toDate().toLocaleString() : (d.timestamp || '-')
+        });
+      });
+      allFeedbacks = feedbacksArray;
+      renderFeedbackPage(1);
+    } catch (err) { console.warn(err); feedbackTbody.innerHTML = '<tr><td colspan="7">Error loading feedback.</td></tr>'; }
+  }
+  
+  function renderFeedbackPage(page) {
+    const totalPages = Math.ceil(allFeedbacks.length / feedbackItemsPerPage);
+    if (page < 1) page = 1;
+    if (page > totalPages && totalPages > 0) page = totalPages;
+    currentFeedbackPage = page;
+    const start = (currentFeedbackPage - 1) * feedbackItemsPerPage;
+    const paginated = allFeedbacks.slice(start, start + feedbackItemsPerPage);
+    
+    if (paginated.length === 0) {
+      feedbackTbody.innerHTML = '<tr><td colspan="7">No feedback messages found.</td></tr>';
+    } else {
+      feedbackTbody.innerHTML = '';
+      let serial = start + 1;
+      paginated.forEach(fb => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${serial++}</td>
+          <td><i class="fas fa-user"></i> ${escapeHtml(fb.fullName)}</td>
+          <td><i class="fas fa-envelope"></i> ${escapeHtml(fb.email)}</td>
+          <td><i class="fab fa-whatsapp"></i> ${escapeHtml(fb.phone)}</td>
+          <td style="word-break:break-word;">${escapeHtml(fb.message)}</td>
+          <td>${escapeHtml(fb.dateStr)}</td>
+          <td class="action-buttons">
+            <button class="btn-warning reply-feedback-btn" data-id="${fb.id}" data-name="${escapeHtml(fb.fullName)}" data-email="${escapeHtml(fb.email)}" data-phone="${escapeHtml(fb.phone)}"><i class="fas fa-reply"></i> Reply</button>
+            <button class="btn-danger delete-feedback-btn" data-id="${fb.id}"><i class="fas fa-trash"></i> Delete</button>
+          </td>
+        `;
+        feedbackTbody.appendChild(row);
+      });
+    }
+    renderPagination('feedback', currentFeedbackPage, totalPages);
+    document.querySelectorAll('.reply-feedback-btn').forEach(btn => {
+      btn.addEventListener('click', () => openReplyModal({ id: btn.dataset.id, name: btn.dataset.name, email: btn.dataset.email, phone: btn.dataset.phone }));
+    });
+    document.querySelectorAll('.delete-feedback-btn').forEach(btn => {
+      btn.addEventListener('click', async () => { if(confirm("Delete this feedback?")) { await deleteDoc(doc(db, "contact-message", btn.dataset.id)); loadAllFeedbacks(); } });
+    });
+  }
+  
+  function updateReplyModalForMethod(method) {
+    if (method === "email") {
+      document.getElementById('replySubjectField').style.display = 'block';
+      document.getElementById('replyWhatsappNumberBox').style.display = 'none';
+      document.getElementById('sendReplyEmailBtn').style.display = 'flex';
+      document.getElementById('sendReplyWhatsAppBtn').style.display = 'none';
+      document.getElementById('replyMethodEmailBtn').classList.add('active');
+      document.getElementById('replyMethodWhatsAppBtn').classList.remove('active');
+      document.getElementById('replySubject').value = `Response to your feedback - WeCare Nursing Services`;
+    } else {
+      document.getElementById('replySubjectField').style.display = 'none';
+      document.getElementById('replyWhatsappNumberBox').style.display = 'block';
+      document.getElementById('sendReplyEmailBtn').style.display = 'none';
+      document.getElementById('sendReplyWhatsAppBtn').style.display = 'flex';
+      document.getElementById('replyMethodWhatsAppBtn').classList.add('active');
+      document.getElementById('replyMethodEmailBtn').classList.remove('active');
+      if (currentReplyData) {
+        document.getElementById('replyWhatsappNumberDisplay').innerHTML = formatPhoneForWhatsApp(currentReplyData.phone) || currentReplyData.phone || 'Not available';
+      }
+    }
+  }
+  
+  function openReplyModal(data) {
+    currentReplyData = data;
+    currentReplyMethod = "email";
+    document.getElementById('replyRecipientInfo').innerHTML = `<i class="fas fa-user"></i> <strong>${escapeHtml(data.name)}</strong> &nbsp;| <i class="fas fa-envelope"></i> ${escapeHtml(data.email)} &nbsp;| <i class="fab fa-whatsapp"></i> ${escapeHtml(data.phone)}`;
+    document.getElementById('replyMessageBody').value = `Dear ${data.name},\n\nWe received your request and we appreciate you reaching out to WeCare Nursing Services. Our team will get back to you shortly.\n\nBest regards,\nWeCare Admin Team`;
+    updateReplyModalForMethod("email");
+    document.getElementById('replyModal').classList.remove('hidden');
+  }
+  
+  function closeReplyModal() { document.getElementById('replyModal').classList.add('hidden'); currentReplyData = null; }
+  
+  function sendReplyEmail() {
+    if (!currentReplyData) return;
+    const to = currentReplyData.email;
+    if (!to || to === '-') { alert("No valid email"); return; }
+    window.location.href = `mailto:${to}?subject=${encodeURIComponent(document.getElementById('replySubject').value)}&body=${encodeURIComponent(document.getElementById('replyMessageBody').value)}`;
+    closeReplyModal();
+  }
+  
+  function sendReplyWhatsApp() {
+    if (!currentReplyData) return;
+    let phone = formatPhoneForWhatsApp(currentReplyData.phone);
+    if (!phone || phone === '-') { alert("No valid phone"); return; }
+    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(document.getElementById('replyMessageBody').value)}`, '_blank');
+    closeReplyModal();
+  }
+  
+  document.getElementById('closeReplyModalBtn').addEventListener('click', closeReplyModal);
+  document.getElementById('sendReplyEmailBtn').addEventListener('click', sendReplyEmail);
+  document.getElementById('sendReplyWhatsAppBtn').addEventListener('click', sendReplyWhatsApp);
+  document.getElementById('replyMethodEmailBtn').addEventListener('click', () => updateReplyModalForMethod("email"));
+  document.getElementById('replyMethodWhatsAppBtn').addEventListener('click', () => updateReplyModalForMethod("whatsapp"));
+  
+  if (exportFeedbackPdf) {
+    exportFeedbackPdf.addEventListener('click', () => {
+      const element = document.getElementById('feedbackTable');
+      html2pdf().from(element).set({
+        margin: 0.5, filename: 'wecare_feedbacks.pdf', html2canvas: { scale: 2 }, jsPDF: { orientation: 'landscape', unit: 'in', format: 'a4' }
+      }).save();
+    });
+  }
+  
+  function switchTab(tabId) {
+    if (tabId === 'cert') {
+      certPanel.classList.add('active-panel'); feedbackPanel.classList.remove('active-panel');
+    } else {
+      feedbackPanel.classList.add('active-panel'); certPanel.classList.remove('active-panel');
+    }
+    tabBtns.forEach(btn => btn.classList.toggle('active', btn.getAttribute('data-tab') === tabId));
+  }
+  
+  tabBtns.forEach(btn => btn.addEventListener('click', () => switchTab(btn.getAttribute('data-tab'))));
+  
+  function escapeHtml(str) { return str ? String(str).replace(/[&<>]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[m])) : ''; }
+  
+  if (auth.currentUser && auth.currentUser.email === ADMIN_ALLOWED_EMAIL) hideLoginModalAndLoad();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</body>
+</html>

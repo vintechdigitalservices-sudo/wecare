@@ -249,6 +249,77 @@
     .newsletter-input button:hover {
       background: #f7941d;
     }
+    .newsletter-input button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    
+    /* Custom Modal Styles */
+    .custom-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.3s ease;
+    }
+    .custom-modal.show {
+      display: flex;
+    }
+    .modal-content {
+      background: white;
+      max-width: 400px;
+      width: 90%;
+      padding: 40px 30px;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      animation: slideUp 0.3s ease;
+    }
+    .modal-content i {
+      font-size: 60px;
+      color: #1e7f4f;
+      margin-bottom: 20px;
+    }
+    .modal-content h4 {
+      font-family: 'Lora', serif;
+      font-size: 1.5rem;
+      color: #0b2545;
+      margin-bottom: 12px;
+    }
+    .modal-content p {
+      color: #555;
+      margin-bottom: 25px;
+      line-height: 1.6;
+    }
+    .modal-close {
+      background: #f7941d;
+      color: #0b2545;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 40px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .modal-close:hover {
+      background: #0b2545;
+      color: white;
+      transform: translateY(-2px);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
     
     @media (max-width: 1023px) {
       .sidebar {
@@ -294,6 +365,16 @@
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
+<!-- Custom Modal -->
+<div id="successModal" class="custom-modal">
+  <div class="modal-content">
+    <i class="fas fa-check-circle"></i>
+    <h4>Thank You! 🎉</h4>
+    <p>You've been successfully subscribed to our newsletter. We'll send health tips, caregiving advice, and WeCare updates straight to your inbox.</p>
+    <button class="modal-close" onclick="closeModal()">Continue Reading</button>
+  </div>
+</div>
+
 <!-- EXACT HEADER FROM HOMEPAGE -->
 <header id="mainHeader">
   <div class="menu-btn" onclick="toggleNav()">☰</div>
@@ -309,7 +390,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <a href="about.html">About</a>
   <a href="packages.html">Care Packages</a>
   <a href="https://g.page/r/CTKHetRyBqVBEBE/review">Reviews</a>
-  <a href="#partners">Partners</a>
   <a href="https://docs.google.com/forms/d/e/1FAIpQLSd8qOjn6CI2uoFW2W324vWePq25QdXcxlSj2WYR2thzU2TZbA/viewform?usp=header">Join Our Team</a>
   <a href="https://academy.wecarenigeria.com/diploma">Academy</a>
   <a href="https://verify.wecarenigeria.com">Certificate Verification</a>
@@ -330,7 +410,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
     <!-- Blog Post 1 -->
     <div class="blog-card">
-      <div class="blog-card-image" style="background-image: url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&h=400&fit=crop'); background-size: cover;"></div>
+      <div class="blog-card-image" style="background-image: url('care-elderly-parents-hero.jpg'); background-size: cover;"></div>
       <div class="blog-card-content">
         <span class="blog-category">Caregiver Tips</span>
         <h3>How to Care for Elderly Parents at Home Without Burning Out</h3>
@@ -344,7 +424,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- Blog Post 2 -->
     <div class="blog-card">
-      <div class="blog-card-image" style="background-image: url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&h=400&fit=crop'); background-size: cover;"></div>
+      <div class="blog-card-image" style="background-image: url('signs-need-care-hero.jpg'); background-size: cover;"></div>
       <div class="blog-card-content">
         <span class="blog-category">Health Insights</span>
         <h3>7 Signs Your Loved One May Need Professional Home Care</h3>
@@ -358,7 +438,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- Blog Post 3 -->
     <div class="blog-card">
-      <div class="blog-card-image" style="background-image: url('https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=600&h=400&fit=crop'); background-size: cover;"></div>
+      <div class="blog-card-image" style="background-image: url('livein-vs-daily-care-hero.jpg'); background-size: cover;"></div>
       <div class="blog-card-content">
         <span class="blog-category">Care Options</span>
         <h3>Live-in Care vs Daily Care Visits: Which Is Best for Your Family?</h3>
@@ -372,7 +452,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- Blog Post 4 -->
     <div class="blog-card">
-      <div class="blog-card-image" style="background-image: url('https://images.unsplash.com/photo-1559027615-5d8b4d2f9a7e?w=600&h=400&fit=crop'); background-size: cover;"></div>
+      <div class="blog-card-image" style="background-image: url('diaspora-care-hero.jpg'); background-size: cover;"></div>
       <div class="blog-card-content">
         <span class="blog-category">Diaspora Care</span>
         <h3>How Nigerians in the Diaspora Can Monitor Their Elderly Parents Back Home</h3>
@@ -386,7 +466,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- Blog Post 5 -->
     <div class="blog-card">
-      <div class="blog-card-image" style="background-image: url('https://images.unsplash.com/photo-1521791055366-0d553872125f?w=600&h=400&fit=crop'); background-size: cover;"></div>
+      <div class="blog-card-image" style="background-image: url('professional-caregiver-hero.jpg'); background-size: cover;"></div>
       <div class="blog-card-content">
         <span class="blog-category">Professional Care</span>
         <h3>What Makes a Professional Caregiver Different From a Regular Domestic Help?</h3>
@@ -407,9 +487,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="newsletter-box">
     <h3>📧 Get Health Tips In Your Inbox</h3>
     <p>Subscribe to our newsletter for expert advice, caregiving tips, and updates from WeCare.</p>
-    <form class="newsletter-input" onsubmit="handleNewsletter(event)">
-      <input type="email" placeholder="Your email address" required>
-      <button type="submit">Subscribe</button>
+    <form class="newsletter-input" id="newsletterForm">
+      <input type="email" id="newsletterEmail" placeholder="Your email address" required>
+      <button type="submit" id="newsletterBtn">Subscribe</button>
     </form>
   </div>
 </div>
@@ -429,11 +509,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <div class="footer-column animate-footer-reveal from-bottom">
         <h3>Services</h3>
-        <ul class="footer-links">
-          <li><a href="#live-in-care">Live-in Care</a></li>
-          <li><a href="#daily-home-care">Daily Care Visit</a></li>
-          <li><a href="#post-natal-care">Post-natal Care</a></li>
-          <li><a href="#academy">Caregiver Academy</a></li>
+            <ul class="footer-links">
+        <li><a href="#live-in-care">Live-in Care</a></li>
+        <li><a href="#daily-home-care">Daily Care Visit</a></li>
+        <li><a href="#post-natal-care">Post-natal Care</a></li>
+        <li><a href="https://academy.wecarenigeria.com/diploma"">Caregiver Academy</a></li>
+      </ul>
         </ul>
       </div>
 
@@ -481,16 +562,69 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 
 <script src="script.js"></script>
-<script>
-  function toggleNav() {
-    document.getElementById('navDrawer').classList.toggle('active');
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+  import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBIM_jh15J2riP1XXtxP4hCmlbx1BqK5-8",
+    authDomain: "wecare--verification.firebaseapp.com",
+    projectId: "wecare--verification",
+    storageBucket: "wecare--verification.firebasestorage.app",
+    messagingSenderId: "198997154830",
+    appId: "1:198997154830:web:a732dc7abc306ed1a5f05f"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  const newsletterForm = document.getElementById('newsletterForm');
+  const newsletterBtn = document.getElementById('newsletterBtn');
+  const emailInput = document.getElementById('newsletterEmail');
+
+  function showModal() {
+    const modal = document.getElementById('successModal');
+    modal.classList.add('show');
   }
 
-  function handleNewsletter(event) {
-    event.preventDefault();
-    const email = event.target.querySelector('input').value;
-    alert('Thank you for subscribing! We\'ll send health tips to ' + email);
-    event.target.reset();
+  window.closeModal = function() {
+    const modal = document.getElementById('successModal');
+    modal.classList.remove('show');
+  }
+
+  newsletterForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const email = emailInput.value.trim();
+    
+    if (!email) {
+      return;
+    }
+    
+    newsletterBtn.disabled = true;
+    newsletterBtn.textContent = 'Subscribing...';
+    
+    try {
+      await addDoc(collection(db, "newsletter"), {
+        email: email,
+        subscribedAt: serverTimestamp(),
+        source: "blog-page"
+      });
+      
+      newsletterForm.reset();
+      showModal();
+      
+    } catch (err) {
+      console.error("Newsletter subscription error:", err);
+      alert("Something went wrong. Please try again later.");
+    } finally {
+      newsletterBtn.disabled = false;
+      newsletterBtn.textContent = 'Subscribe';
+    }
+  });
+
+  function toggleNav() {
+    document.getElementById('navDrawer').classList.toggle('active');
   }
 
   window.addEventListener('scroll', function() {
